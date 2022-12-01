@@ -6,33 +6,35 @@
 package com.Business.Organization;
 
 import com.Business.Role.Role;
-import com.Business.Role.VolunteerRole;
-import com.Business.Worker.VolunteerDir;
+import com.Business.Role.VictimRole;
+import com.Business.Volunteer.VictimDir;
 import java.util.HashSet;
 
 
-public class VolunteerOrg extends Organization{
-    VolunteerDir volunteerList;
-    //constructor to add volunteer list to volunteer directory
-    public VolunteerOrg(String name) {
-        super(Organization.Type.Volunteer.getValue());
-        volunteerList= new VolunteerDir();
+public class VictimOrg extends Organization{
+    VictimDir victimList;
+    
+    public VictimOrg()
+    {
+        super(Organization.Type.Victim.getValue());
+        victimList=new VictimDir();
+    }
+
+    
+//set changeseeker list
+    public void setChangeseekerlist(VictimDir victimList) {
+        this.victimList = victimList;
     }
     
-    //set voulnteerList
-     public void setVolunteerList(VolunteerDir volunteerList) {
-        this.volunteerList = volunteerList;
+    
+    public VictimDir getChangeseekerlist() {
+        return victimList;
     }
-
-    public VolunteerDir getVolunteerList() {
-        return volunteerList;
-    }
-
-   
-    //hashmap to support volunteer role
+    
     @Override
     public HashSet<Role> getSupportedRole(){
-        role.add(new VolunteerRole());
-       return role;
+        role.add(new VictimRole());
+        return role;
+        
     }
 }

@@ -9,20 +9,20 @@ import com.Business.Ecosystem;
 import com.Business.Enterprise.Enterprise;
 import com.Business.Organization.Organization;
 import com.Business.UserAccount.UserAccount;
-import com.UI.WorkerOrganization.WorkerAdminDashboard;
+import com.UI.Volunteer.VolunteerAdminDashboard;
 import javax.swing.JPanel;
 
 
-public class VolunteerAdminRole extends Role{
-    //overriding main panel with volunteer admin work area whenever volunteer admin role is called
+public class VictimAdminRole extends Role{
+    //overriding main panel with victim admin work area whenever victim admin role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
-        return new WorkerAdminDashboard(userProcessContainer,enterprise);
-    }   
+        return new VolunteerAdminDashboard(userProcessContainer,enterprise);
+    }
         @Override
         public String toString()
 {
-   return Role.RoleType.VolunteerAdminRole.getValue();
+   return Role.RoleType.VictimAdmin.getValue();
 }
 
 }

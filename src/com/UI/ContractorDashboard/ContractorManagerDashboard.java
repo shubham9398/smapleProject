@@ -373,11 +373,7 @@ public class ContractorManagerDashboard extends javax.swing.JPanel {
 
         btnAnalysis.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAnalysis.setForeground(new java.awt.Color(153, 0, 153));
-<<<<<<< HEAD:src/com/UI/ContractorDashboard/ContractorManagerDashboard.java
-        btnAnalysis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/UI/ContractorDashboard/research (1).png"))); // NOI18N
-=======
         btnAnalysis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/iconfinder_User_Interface-10_2044278.png"))); // NOI18N
->>>>>>> 96543ff (changes 6):src/UI/NGOManager/NGOManagerWorkArea.java
         btnAnalysis.setText("Worker Stats");
         btnAnalysis.setBorderPainted(false);
         btnAnalysis.setContentAreaFilled(false);

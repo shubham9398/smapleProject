@@ -8,32 +8,32 @@ package com.Business.Volunteer;
 import java.util.ArrayList;
 
 //victim
-public class VictimDir {
-    private ArrayList<Victim> changeSeekerDir;
+public class VolunteerDir {
+    private ArrayList<Volunteer> changeSeekerDir;
 
-    public VictimDir() {
+    public VolunteerDir() {
         changeSeekerDir=new ArrayList<>();
         
     }
 
    
    
-    public Victim addChangeSeeker(){
-        Victim cs= new Victim();
+    public Volunteer addChangeSeeker(){
+        Volunteer cs= new Volunteer();
         changeSeekerDir.add(cs);
         return cs;
     }
     
     
-     public ArrayList<Victim> getChangeSeekerDir() {
+     public ArrayList<Volunteer> getChangeSeekerDir() {
         return changeSeekerDir;
     }
 
-    public void setChangeSeekerDir(ArrayList<Victim> changeSeekerDir) {
+    public void setChangeSeekerDir(ArrayList<Volunteer> changeSeekerDir) {
         this.changeSeekerDir = changeSeekerDir;
     }
   
-    public void removeChangeSeeker(Victim cs){
+    public void removeChangeSeeker(Volunteer cs){
         changeSeekerDir.remove(cs);
     }
     

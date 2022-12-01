@@ -5,34 +5,34 @@
  */
 package com.Business.Organization;
 
-import com.Business.Contractor.NGODir;
-import com.Business.Role.NGOManagerRole;
+import com.Business.Contractor.ContractorDir;
+import com.Business.Role.ContractorManagerRole;
 import com.Business.Role.Role;
 import java.util.HashSet;
 
 
-public class NGOOrg extends Organization{
-    NGODir ngoList;
+public class ContractorOrg extends Organization{
+    ContractorDir ngoList;
     //constructor to add NGO list to NGO directory
-    public NGOOrg()
+    public ContractorOrg()
     {
         super(Organization.Type.NGO.getValue());
-        ngoList=new NGODir();
+        ngoList=new ContractorDir();
     }
 
     
 
-    public void setNgoList(NGODir ngoList) {
+    public void setNgoList(ContractorDir ngoList) {
         this.ngoList = ngoList;
     }
     
-    public NGODir getNgoList() {
+    public ContractorDir getNgoList() {
         return ngoList;
     }
     //hashmap to support NGO role
     @Override
     public HashSet<Role> getSupportedRole(){
-       role.add(new NGOManagerRole());
+       role.add(new ContractorManagerRole());
        return role;
        
     }

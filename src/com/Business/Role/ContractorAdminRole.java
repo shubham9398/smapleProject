@@ -13,7 +13,7 @@ import com.UI.ContractorEnterprise.ContractorAdminDashboard;
 import javax.swing.JPanel;
 
 
-public class NGOAdminRole extends Role{
+public class ContractorAdminRole extends Role{
     //overriding main panel with NGO admin work area whenever NGO admin role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){

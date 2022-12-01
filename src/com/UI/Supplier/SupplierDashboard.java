@@ -9,11 +9,11 @@ package com.UI.Supplier;
 import com.Business.Ecosystem;
 import com.Business.Enterprise.Enterprise;
 import com.Business.Organization.Organization;
-import com.Business.Organization.ProviderOrg;
+import com.Business.Organization.SupplierOrg;
 import com.Business.Supplier.Item;
 import com.Business.Supplier.Supplier;
 import com.Business.UserAccount.UserAccount;
-import com.Business.WorkQueue.ProviderWorkReq;
+import com.Business.WorkQueue.SupplierWorkReq;
 import com.Business.WorkQueue.WorkQueue;
 import com.Business.WorkQueue.WorkReq;
 import javax.swing.JOptionPane;
@@ -44,7 +44,7 @@ public class SupplierDashboard extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.system=system;
        
-          for (Supplier provider : ((ProviderOrg)organization).getProviderList().getProviderList()) {
+          for (Supplier provider : ((SupplierOrg)organization).getProviderList().getProviderList()) {
             if (account.getEmployee().getEmployeeName().equals(provider.getSupplierName())) {
                  p=provider;
             }
@@ -66,11 +66,11 @@ public class SupplierDashboard extends javax.swing.JPanel {
         
         
         for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof ProviderWorkReq){ 
+           if(work instanceof SupplierWorkReq){ 
             Object[] row = new Object[10];
-            row[0] = ((ProviderWorkReq) work).getRtype();
-            row[1] = ((ProviderWorkReq) work).getReq();
-            row[2] = ((ProviderWorkReq) work).getQuantity();
+            row[0] = ((SupplierWorkReq) work).getRtype();
+            row[1] = ((SupplierWorkReq) work).getReq();
+            row[2] = ((SupplierWorkReq) work).getQuantity();
             row[3] = work;
             row[4] = work.getSender();
            
@@ -347,7 +347,7 @@ public class SupplierDashboard extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            ProviderWorkReq nswr = (ProviderWorkReq) tblProvideReq.getValueAt(selectedRow, 3);
+            SupplierWorkReq nswr = (SupplierWorkReq) tblProvideReq.getValueAt(selectedRow, 3);
 
             nswr.setStatus("Pending");
             nswr.setReciever(account);
@@ -367,7 +367,7 @@ public class SupplierDashboard extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            ProviderWorkReq pwr = (ProviderWorkReq) tblProvideReq.getValueAt(selectedRow, 3);
+            SupplierWorkReq pwr = (SupplierWorkReq) tblProvideReq.getValueAt(selectedRow, 3);
             if (pwr.getReciever() != null) {
                 if (pwr.getStatus().equals("Pending")) {
 //                    UserAccount a = pwr.getSender();

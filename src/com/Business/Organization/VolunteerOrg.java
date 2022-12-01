@@ -6,34 +6,34 @@
 package com.Business.Organization;
 
 import com.Business.Role.Role;
-import com.Business.Role.VictimRole;
-import com.Business.Volunteer.VictimDir;
+import com.Business.Role.VolunteerRole;
+import com.Business.Volunteer.VolunteerDir;
 import java.util.HashSet;
 
 
-public class VictimOrg extends Organization{
-    VictimDir victimList;
+public class VolunteerOrg extends Organization{
+    VolunteerDir victimList;
     
-    public VictimOrg()
+    public VolunteerOrg()
     {
         super(Organization.Type.Victim.getValue());
-        victimList=new VictimDir();
+        victimList=new VolunteerDir();
     }
 
     
 //set changeseeker list
-    public void setChangeseekerlist(VictimDir victimList) {
+    public void setChangeseekerlist(VolunteerDir victimList) {
         this.victimList = victimList;
     }
     
     
-    public VictimDir getChangeseekerlist() {
+    public VolunteerDir getChangeseekerlist() {
         return victimList;
     }
     
     @Override
     public HashSet<Role> getSupportedRole(){
-        role.add(new VictimRole());
+        role.add(new VolunteerRole());
         return role;
         
     }

@@ -26,7 +26,7 @@ public class OrganizationDir {
     Organization organization = null;
         if (type.getValue().equals(Organization.Type.EventMaker.getValue())){
             
-            organization = new EventMakerOrg();
+            organization = new GovernmentOrg();
             organization.setOrgName(name);
             organizationList.add(organization);
         }
@@ -39,17 +39,17 @@ public class OrganizationDir {
         }
         
         else if (type.getValue().equals(Organization.Type.Victim.getValue())){
-            organization = new VictimOrg();
+            organization = new VolunteerOrg();
             organization.setOrgName(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Organization.Type.NGO.getValue())){
-            organization = new NGOOrg();
+            organization = new ContractorOrg();
             organization.setOrgName(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Organization.Type.Provider.getValue())){
-            organization = new ProviderOrg(name);
+            organization = new SupplierOrg(name);
             organization.setOrgName(name);
             organizationList.add(organization);
         }
@@ -57,12 +57,12 @@ public class OrganizationDir {
         
         
         else if (type.getValue().equals(Organization.Type.Volunteer.getValue())){
-            organization = new VolunteerOrg(name);
+            organization = new WorkerOrg(name);
             organization.setOrgName(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Organization.Type.Doctor.getValue())){
-            organization = new DoctorOrg();
+            organization = new RoadSafetyOrg();
             organization.setOrgName(name);
             organizationList.add(organization);
         }

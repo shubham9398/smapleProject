@@ -6,25 +6,25 @@
 package com.Business.Organization;
 
 import com.Business.Role.Role;
-import com.Business.Role.VolunteerRole;
-import com.Business.Worker.VolunteerDir;
+import com.Business.Role.WorkerRole;
+import com.Business.Worker.WorkerDir;
 import java.util.HashSet;
 
 
-public class VolunteerOrg extends Organization{
-    VolunteerDir volunteerList;
+public class WorkerOrg extends Organization{
+    WorkerDir volunteerList;
     //constructor to add volunteer list to volunteer directory
-    public VolunteerOrg(String name) {
+    public WorkerOrg(String name) {
         super(Organization.Type.Volunteer.getValue());
-        volunteerList= new VolunteerDir();
+        volunteerList= new WorkerDir();
     }
     
     //set voulnteerList
-     public void setVolunteerList(VolunteerDir volunteerList) {
+     public void setVolunteerList(WorkerDir volunteerList) {
         this.volunteerList = volunteerList;
     }
 
-    public VolunteerDir getVolunteerList() {
+    public WorkerDir getVolunteerList() {
         return volunteerList;
     }
 
@@ -32,7 +32,7 @@ public class VolunteerOrg extends Organization{
     //hashmap to support volunteer role
     @Override
     public HashSet<Role> getSupportedRole(){
-        role.add(new VolunteerRole());
+        role.add(new WorkerRole());
        return role;
     }
 }

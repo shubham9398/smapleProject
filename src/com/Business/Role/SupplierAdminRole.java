@@ -13,7 +13,7 @@ import com.UI.SupplierEnterprise.SupplierAdminDashboard;
 import javax.swing.JPanel;
 
 
-public class ProviderAdminRole extends Role{
+public class SupplierAdminRole extends Role{
     //overriding main panel with provier admin work area whenever provider admin role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){

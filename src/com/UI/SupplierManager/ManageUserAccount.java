@@ -10,9 +10,9 @@ import com.Business.Ecosystem;
 import com.Business.Employee.Employee;
 import com.Business.Enterprise.Enterprise;
 import com.Business.Organization.Organization;
-import com.Business.Organization.ProviderOrg;
+import com.Business.Organization.SupplierOrg;
 import com.Business.Supplier.Supplier;
-import com.Business.Role.ProviderRole;
+import com.Business.Role.SupplierRole;
 import com.Business.Role.Role;
 import com.Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -59,8 +59,8 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof ProviderOrg){
-            comboRole.addItem(new ProviderRole());
+        if(organization instanceof SupplierOrg){
+            comboRole.addItem(new SupplierRole());
            
         }
       
@@ -331,11 +331,11 @@ public class ManageUserAccount extends javax.swing.JPanel {
                 Organization organization = (Organization) comboOrg.getSelectedItem();
                 Employee employee = (Employee) comboEmp.getSelectedItem();
                 Role role = (Role) comboRole.getSelectedItem();
-                if (organization instanceof ProviderOrg){
+                if (organization instanceof SupplierOrg){
                     Supplier p= new Supplier();
 
                     p.setSupplierName(employee.getEmployeeName());
-                    ((ProviderOrg) organization).getProviderList().getProviderList().add(p);
+                    ((SupplierOrg) organization).getProviderList().getProviderList().add(p);
 
                     }
                 organization.getUserAccountDir().createUserAccount(userName, password, employee, role);

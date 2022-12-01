@@ -8,10 +8,10 @@ package com.UI.VolunteerDashboard;
 
 import com.Business.Ecosystem;
 import com.Business.Enterprise.Enterprise;
-import com.Business.Government.EventMaker;
+import com.Business.Government.Government;
 import com.Business.Organization.Organization;
 import com.Business.UserAccount.UserAccount;
-import com.Business.WorkQueue.VictimWorkReq;
+import com.Business.WorkQueue.VolunteerWorkReq;
 import com.Business.WorkQueue.WorkReq;
 import com.googlemaps.GoogleMapsViewer;
 import java.awt.event.WindowAdapter;
@@ -35,7 +35,7 @@ import com.teamdev.jxbrowser.engine.Engine;
 import com.teamdev.jxbrowser.engine.EngineOptions;
 import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 import com.teamdev.jxbrowser.view.swing.BrowserView;
-import googlemaps.Marker;
+import com.googlemaps.Marker;
 
 
 /**
@@ -53,7 +53,7 @@ public class VolunteerDashboard extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Ecosystem system;
     ImageIcon imageIcon;
-    EventMaker em;
+    Government em;
     Browser browser;
     
     Marker marker;
@@ -78,12 +78,12 @@ public class VolunteerDashboard extends javax.swing.JPanel {
         
         
         for (WorkReq work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkReq){ 
+           if(work instanceof VolunteerWorkReq){ 
             Object[] row = new Object[10];
             row[0] = work.getSender().getEmployee().getEmployeeName();
             row[1] = work.getSubject();
-            row[2] = ((VictimWorkReq) work).getDescription();
-            row[3] = ((VictimWorkReq) work).getLocation();
+            row[2] = ((VolunteerWorkReq) work).getDescription();
+            row[3] = ((VolunteerWorkReq) work).getLocation();
             row[4] = work.getRequestDate();
             row[5] = work;
             row[6] = work.getReciever();
@@ -324,7 +324,7 @@ public class VolunteerDashboard extends javax.swing.JPanel {
             return;
         }
         
-        VictimWorkReq req = new VictimWorkReq();
+        VolunteerWorkReq req = new VolunteerWorkReq();
         req.setSubject(subject);
         req.setDescription(desp);
         req.setLocation(location);

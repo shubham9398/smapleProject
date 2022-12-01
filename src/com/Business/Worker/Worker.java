@@ -8,13 +8,13 @@ package com.Business.Worker;
 import com.Business.WorkQueue.WorkQueue;
 
 
-public class Volunteer {
+public class Worker {
     private String volunteerName;
     private String volunteerId;
     private static int count=1;
     private WorkQueue workqueue;
     //Volunteer class constructor 
-    public Volunteer() {
+    public Worker() {
         volunteerId="Vol"+(++count);
         workqueue= new WorkQueue();
     }

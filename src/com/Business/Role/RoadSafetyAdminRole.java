@@ -13,7 +13,7 @@ import com.UI.RoadSafetyEnterprise.RoadSafetyAdminDashboard;
 import javax.swing.JPanel;
 
 
-public class DoctorAdminRole extends Role{
+public class RoadSafetyAdminRole extends Role{
     //overriding main panel with doctor admin work area whenever doctor admin role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){

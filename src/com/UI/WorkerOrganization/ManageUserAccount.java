@@ -10,11 +10,11 @@ import com.Business.Ecosystem;
 import com.Business.Employee.Employee;
 import com.Business.Enterprise.Enterprise;
 import com.Business.Organization.Organization;
-import com.Business.Organization.VolunteerOrg;
+import com.Business.Organization.WorkerOrg;
 import com.Business.Role.Role;
-import com.Business.Role.VolunteerRole;
+import com.Business.Role.WorkerRole;
 import com.Business.UserAccount.UserAccount;
-import com.Business.Worker.Volunteer;
+import com.Business.Worker.Worker;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -44,7 +44,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
         comboOrg.removeAllItems();
 
         for (Organization organization : enterprise.getOrganizationDir().getOrganizationList()) {
-            if(organization instanceof VolunteerOrg)
+            if(organization instanceof WorkerOrg)
             comboOrg.addItem(organization);
             
         }
@@ -61,8 +61,8 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof VolunteerOrg){
-            comboRole.addItem(new VolunteerRole());
+        if(organization instanceof WorkerOrg){
+            comboRole.addItem(new WorkerRole());
         
         }
       
@@ -342,12 +342,12 @@ public class ManageUserAccount extends javax.swing.JPanel {
         Role role = (Role) comboRole.getSelectedItem();
         
         
-        if (organization instanceof VolunteerOrg){
-           Volunteer vt = new Volunteer();
+        if (organization instanceof WorkerOrg){
+           Worker vt = new Worker();
             
            vt.setVolunteerName(employee.getEmployeeName());
            
-           ((VolunteerOrg) organization).getVolunteerList().getVolunteerList().add(vt);
+           ((WorkerOrg) organization).getVolunteerList().getVolunteerList().add(vt);
           
         }
         organization.getUserAccountDir().createUserAccount(userName, password, employee, role);

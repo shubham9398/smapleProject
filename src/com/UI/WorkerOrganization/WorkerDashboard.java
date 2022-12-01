@@ -7,14 +7,14 @@ package com.UI.WorkerOrganization;
 
 import com.Business.Ecosystem;
 import com.Business.Enterprise.Enterprise;
-import com.Business.Government.EventMaker;
-import com.Business.Organization.EventMakerOrg;
+import com.Business.Government.Government;
+import com.Business.Organization.GovernmentOrg;
 import com.Business.Organization.Organization;
-import com.Business.Organization.VolunteerOrg;
+import com.Business.Organization.WorkerOrg;
 import com.Business.UserAccount.UserAccount;
-import com.Business.Worker.Volunteer;
-import com.Business.WorkQueue.NGOWorkReq;
-import com.Business.WorkQueue.VictimWorkReq;
+import com.Business.Worker.Worker;
+import com.Business.WorkQueue.ContractorWorkReq;
+import com.Business.WorkQueue.VolunteerWorkReq;
 import com.Business.WorkQueue.WorkQueue;
 import com.Business.WorkQueue.WorkReq;
 import java.awt.CardLayout;
@@ -36,7 +36,7 @@ public class WorkerDashboard extends javax.swing.JPanel {
     private Organization organization;
     private Enterprise enterprise;
     private Ecosystem system;
-    private Volunteer vm;
+    private Worker vm;
     
     public WorkerDashboard(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
         initComponents();
@@ -46,7 +46,7 @@ public class WorkerDashboard extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.system=system;
        
-        for (Volunteer volunteer:((VolunteerOrg)organization).getVolunteerList().getVolunteerList())
+        for (Worker volunteer:((WorkerOrg)organization).getVolunteerList().getVolunteerList())
         {
             if (account.getEmployee().getEmployeeName().equals(volunteer.getVolunteerName())) {
                  vm=volunteer;
@@ -73,14 +73,14 @@ public class WorkerDashboard extends javax.swing.JPanel {
         
         
         for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof NGOWorkReq){ 
+           if(work instanceof ContractorWorkReq){ 
             Object[] row = new Object[10];
             row[0] = work;
-            row[1] = ((NGOWorkReq) work).getDescription();
+            row[1] = ((ContractorWorkReq) work).getDescription();
             row[2] =  work.getRequestDate();
-            row[3] = ((NGOWorkReq) work).getLocation();
-            row[4] = ((NGOWorkReq) work).getvRequired();
-            row[5] =  ((NGOWorkReq) work).getvAcquired();
+            row[3] = ((ContractorWorkReq) work).getLocation();
+            row[4] = ((ContractorWorkReq) work).getvRequired();
+            row[5] =  ((ContractorWorkReq) work).getvAcquired();
             
             model.addRow(row);
            }
@@ -305,7 +305,7 @@ public class WorkerDashboard extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-        NGOWorkReq p = (NGOWorkReq) tblEventNGO.getValueAt(selectedRow, 0);
+        ContractorWorkReq p = (ContractorWorkReq) tblEventNGO.getValueAt(selectedRow, 0);
       
         p.setvRequired(p.getvRequired()-1);
         p.setvAcquired(p.getvAcquired()+1);
@@ -326,7 +326,7 @@ public class WorkerDashboard extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            NGOWorkReq p = (NGOWorkReq) tblEventNGO.getValueAt(selectedRow, 0);
+            ContractorWorkReq p = (ContractorWorkReq) tblEventNGO.getValueAt(selectedRow, 0);
             txtTitle.setText(p.getTitle());
             txtDesc.setText(p.getDescription());
             txtLoc.setText(p.getLocation());

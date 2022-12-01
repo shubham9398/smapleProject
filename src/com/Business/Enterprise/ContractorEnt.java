@@ -5,7 +5,7 @@
  */
 package com.Business.Enterprise;
 
-import com.Business.Role.NGOManagerRole;
+import com.Business.Role.ContractorManagerRole;
 import com.Business.Role.Role;
 import java.util.HashSet;
 
@@ -17,7 +17,7 @@ public class ContractorEnt extends Enterprise {
     //hash map to for NGO role addition
     @Override
     public HashSet<Role> getSupportedRole(){
-        role.add(new NGOManagerRole());
+        role.add(new ContractorManagerRole());
         return role;
     }
 }

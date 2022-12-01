@@ -5,11 +5,11 @@
  */
 package com.Business.Enterprise;
 
-import com.Business.Role.EventMakerAdminRole;
+import com.Business.Role.GovernmentAdminRole;
 import com.Business.Role.Role;
-import com.Business.Role.VolunteerAdminRole;
+import com.Business.Role.WorkerAdminRole;
 import java.util.HashSet;
-import com.Business.Role.VictimAdminRole;
+import com.Business.Role.VolunteerAdminRole;
 
 
 public class CommunityEnt extends Enterprise{
@@ -22,11 +22,11 @@ public class CommunityEnt extends Enterprise{
        
         
               
-        role.add(new VictimAdminRole());
-        
         role.add(new VolunteerAdminRole());
         
-        role.add(new EventMakerAdminRole());
+        role.add(new WorkerAdminRole());
+        
+        role.add(new GovernmentAdminRole());
        
         return role;
         

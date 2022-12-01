@@ -8,37 +8,37 @@ package com.Business.Worker;
 import java.util.ArrayList;
 
 
-public class VolunteerDir {
-    private ArrayList<Volunteer> volunteerList;
+public class WorkerDir {
+    private ArrayList<Worker> volunteerList;
 
-    public VolunteerDir() {
+    public WorkerDir() {
         volunteerList= new ArrayList<>();
         
     }
     
     
-     public void setVolunteerList(ArrayList<Volunteer> volunteerList) {
+     public void setVolunteerList(ArrayList<Worker> volunteerList) {
         this.volunteerList = volunteerList;
     }
  
      
      //add vulunteer functon 
-    public Volunteer addVolunteer(){
+    public Worker addVolunteer(){
     
-        Volunteer v = new Volunteer();
+        Worker v = new Worker();
         volunteerList.add(v);
         return v;
     }
 
     
     //get voluteer list
-    public ArrayList<Volunteer> getVolunteerList() {
+    public ArrayList<Worker> getVolunteerList() {
         return volunteerList;
     }
 
    // remove volunteer form the list
   
-    public void removeVolunteer(Volunteer v){
+    public void removeVolunteer(Worker v){
         volunteerList.remove(v);
     }
 }

@@ -6,10 +6,10 @@
 package com.UI.RoadSafetyDashboard;
 import com.Business.Ecosystem;
 import com.Business.Enterprise.Enterprise;
-import com.Business.Organization.DoctorOrg;
+import com.Business.Organization.RoadSafetyOrg;
 import com.Business.Organization.Organization;
 import com.Business.UserAccount.UserAccount;
-import com.Business.WorkQueue.VictimWorkReq;
+import com.Business.WorkQueue.VolunteerWorkReq;
 import com.Business.WorkQueue.WorkReq;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -26,7 +26,7 @@ public class RoadSafetyDashboard extends javax.swing.JPanel {
     private Organization organization;
     private Enterprise enterprise;
     private Ecosystem system;
-    DoctorOrg doctorOrganization;
+    RoadSafetyOrg doctorOrganization;
 
     /**
      * Creates new form DoctorWorkArea
@@ -51,7 +51,7 @@ public class RoadSafetyDashboard extends javax.swing.JPanel {
         
         
         for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkReq){
+           if(work instanceof VolunteerWorkReq){
                if(work.getStatusList() != null){
                if((work.getStatus().equalsIgnoreCase("Assigned To Road Safety Department"))||(work.getStatus().equalsIgnoreCase("Road Safety Department undertook Request")) || work.getStatusList().contains("RoadSafety") ){
                    
@@ -59,8 +59,8 @@ public class RoadSafetyDashboard extends javax.swing.JPanel {
             Object[] row = new Object[10];
             row[0] = work.getSender().getEmployee().getEmployeeName();
             row[1] = work.getSubject();
-            row[2] = ((VictimWorkReq) work).getDescription();
-            row[3] = ((VictimWorkReq) work).getLocation();
+            row[2] = ((VolunteerWorkReq) work).getDescription();
+            row[3] = ((VolunteerWorkReq) work).getLocation();
             row[4] = work.getRequestDate();
             row[5] = work;
             row[6] = work.getReciever();
@@ -213,7 +213,7 @@ public class RoadSafetyDashboard extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkReq cswr = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
+            VolunteerWorkReq cswr = (VolunteerWorkReq) tblRequests.getValueAt(selectedRow, 5);
             if(cswr.getStatusList().contains("RoadSafety") ){
             cswr.setStatus("Road Safety Department undertook Request");
             cswr.setReciever(account);
@@ -234,7 +234,7 @@ public class RoadSafetyDashboard extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkReq p = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
+            VolunteerWorkReq p = (VolunteerWorkReq) tblRequests.getValueAt(selectedRow, 5);
             
             if(p.getStatus().equalsIgnoreCase("Completed")){
                 p.setStatus("Completed");

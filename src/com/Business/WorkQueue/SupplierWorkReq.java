@@ -6,13 +6,13 @@
 package com.Business.WorkQueue;
 
 
-public class ProviderWorkReq extends WorkReq{
+public class SupplierWorkReq extends WorkReq{
     private int quantity;
     private boolean add;
     private String rtype;
     private String req;
 
-      public ProviderWorkReq() {
+      public SupplierWorkReq() {
        
         add = false;
        

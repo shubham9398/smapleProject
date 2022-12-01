@@ -5,15 +5,15 @@
  */
 package com.Business.WorkQueue;
 
-import com.Business.Government.EventMaker;
+import com.Business.Government.Government;
 import com.Business.FireMan.FireMan;
-import com.Business.Contractor.NGO;
+import com.Business.Contractor.Contractor;
 import com.Business.Police.Police;
 import com.Business.Supplier.Item;
 import com.Business.Supplier.Supplier;
 import com.Business.UserAccount.UserAccount;
-import com.Business.Volunteer.Victim;
-import com.Business.Worker.Volunteer;
+import com.Business.Volunteer.Volunteer;
+import com.Business.Worker.Worker;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -25,12 +25,12 @@ public abstract class WorkReq {
     private String status;
     private Date requestDate;
     private Date resolveDate;
-    private EventMaker eventMaker;
-    private Victim changeSeeker;
-    private NGO ngo;
+    private Government eventMaker;
+    private Volunteer changeSeeker;
+    private Contractor ngo;
     private Supplier provider;
     private Item item;
-    private Volunteer volunteer;
+    private Worker volunteer;
     private Police police;
     private FireMan fireman;
     private ArrayList<String> statusList; 
@@ -78,11 +78,11 @@ public abstract class WorkReq {
         return subject;
     }
     
-     public Volunteer getVolunteer() {
+     public Worker getVolunteer() {
         return volunteer;
     }
 
-    public void setVolunteer(Volunteer volunteer) {
+    public void setVolunteer(Worker volunteer) {
         this.volunteer = volunteer;
     }
 
@@ -95,11 +95,11 @@ public abstract class WorkReq {
     }
     
     
-     public NGO getNgo() {
+     public Contractor getNgo() {
         return ngo;
     }
 
-    public void setNgo(NGO ngo) {
+    public void setNgo(Contractor ngo) {
         this.ngo = ngo;
     }
 
@@ -144,19 +144,19 @@ public abstract class WorkReq {
 
     
 
-    public EventMaker getEventMaker() {
+    public Government getEventMaker() {
         return eventMaker;
     }
 
-    public void setEventMaker(EventMaker eventMaker) {
+    public void setEventMaker(Government eventMaker) {
         this.eventMaker = eventMaker;
     }
 
-    public Victim getChangeSeeker() {
+    public Volunteer getChangeSeeker() {
         return changeSeeker;
     }
 
-    public void setChangeSeeker(Victim changeSeeker) {
+    public void setChangeSeeker(Volunteer changeSeeker) {
         this.changeSeeker = changeSeeker;
     }
     

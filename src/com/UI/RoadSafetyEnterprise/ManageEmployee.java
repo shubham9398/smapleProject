@@ -6,7 +6,7 @@
 package com.UI.RoadSafetyEnterprise;
 
 import com.Business.Employee.Employee;
-import com.Business.Organization.DoctorOrg;
+import com.Business.Organization.RoadSafetyOrg;
 import com.Business.Organization.Organization;
 import com.Business.Organization.OrganizationDir;
 import java.awt.CardLayout;
@@ -51,7 +51,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         comboOrg.removeAllItems();
         
         for (Organization organization : orgdirectory.getOrganizationList()){
-            if(organization instanceof DoctorOrg)
+            if(organization instanceof RoadSafetyOrg)
             comboOrg.addItem(organization);
         }
     }
@@ -60,7 +60,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         comboOrgSelect.removeAllItems();
 
         for (Organization organization : orgdirectory.getOrganizationList()){
-            if((organization instanceof DoctorOrg))
+            if((organization instanceof RoadSafetyOrg))
             comboOrgSelect.addItem(organization);
         }
     }

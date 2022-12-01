@@ -7,18 +7,18 @@ package com.Business.Role;
 
 import com.Business.Ecosystem;
 import com.Business.Enterprise.Enterprise;
-import com.Business.Organization.NGOOrg;
+import com.Business.Organization.ContractorOrg;
 import com.Business.Organization.Organization;
 import com.Business.UserAccount.UserAccount;
 import com.UI.ContractorDashboard.ContractorManagerDashboard;
 import javax.swing.JPanel;
 
 
-public class NGOManagerRole extends Role{
+public class ContractorManagerRole extends Role{
     //overriding main panel with NGO Manager work area whenever NGO Manager role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
-        return new ContractorManagerDashboard(userProcessContainer,account,(NGOOrg)organization,enterprise,system);
+        return new ContractorManagerDashboard(userProcessContainer,account,(ContractorOrg)organization,enterprise,system);
     }
         @Override
         public String toString()

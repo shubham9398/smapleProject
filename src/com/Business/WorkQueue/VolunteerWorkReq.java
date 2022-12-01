@@ -11,14 +11,14 @@ import javax.swing.ImageIcon;
  *
  * @author vidhi
  */
-public class VictimWorkReq extends WorkReq{
+public class VolunteerWorkReq extends WorkReq{
     private String Description;
     private String Location;
     private boolean add;
     private ImageIcon imageIcon;
     
     
-    public VictimWorkReq() {
+    public VolunteerWorkReq() {
         
         add = false;
     }

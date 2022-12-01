@@ -6,7 +6,7 @@
 package com.Business.WorkQueue;
 
 
-public class NGOWorkReq extends WorkReq{
+public class ContractorWorkReq extends WorkReq{
     private String title;
     private String description;
     private String location;
@@ -15,7 +15,7 @@ public class NGOWorkReq extends WorkReq{
     private boolean add;
     private String volQty;
     
-    public NGOWorkReq() {
+    public ContractorWorkReq() {
         
         add = false;
         

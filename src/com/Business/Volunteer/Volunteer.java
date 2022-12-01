@@ -8,14 +8,14 @@ package com.Business.Volunteer;
 import com.Business.WorkQueue.WorkQueue;
 
 
-public class Victim {
+public class Volunteer {
     private String victimName;
     private String victimId;
     private WorkQueue workqueue;
     
     private static int count=1;
     //victim class constructor to autogenerate victimId
-     public Victim(){
+     public Volunteer(){
          
         victimId= "Victim"+(++count);
     }

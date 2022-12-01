@@ -9,9 +9,9 @@ package com.UI.ContractorEnterprise;
 import com.Business.Ecosystem;
 import com.Business.Employee.Employee;
 import com.Business.Enterprise.Enterprise;
-import com.Business.Organization.NGOOrg;
+import com.Business.Organization.ContractorOrg;
 import com.Business.Organization.Organization;
-import com.Business.Role.NGOManagerRole;
+import com.Business.Role.ContractorManagerRole;
 import com.Business.Role.Role;
 import com.Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -58,8 +58,8 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof NGOOrg){
-            comboRole.addItem(new NGOManagerRole());
+        if(organization instanceof ContractorOrg){
+            comboRole.addItem(new ContractorManagerRole());
         }
       
     }

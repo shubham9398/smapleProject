@@ -5,7 +5,7 @@
  */
 package com.Business.Enterprise;
 
-import com.Business.Role.ProviderManagerRole;
+import com.Business.Role.SupplierManagerRole;
 import com.Business.Role.Role;
 import java.util.HashSet;
 
@@ -18,7 +18,7 @@ public class SupplierEnt extends Enterprise{
     //hash map to for Provider role addition
     @Override
     public HashSet<Role> getSupportedRole(){
-        new ProviderManagerRole();
+        new SupplierManagerRole();
         return role;
         
     }

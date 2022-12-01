@@ -8,14 +8,14 @@ package com.Business.Government;
 import com.Business.WorkQueue.WorkQueue;
 
 
-public class EventMaker {
+public class Government {
     private String name;
     private String id;
     private WorkQueue workQueue;
     
     private static int count=1;
     //Event maker class constructor
-     public EventMaker(){
+     public Government(){
          
         id= "EM"+(++count);
         workQueue=new WorkQueue();

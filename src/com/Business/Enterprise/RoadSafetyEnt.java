@@ -5,7 +5,7 @@
  */
 package com.Business.Enterprise;
 
-import com.Business.Role.DoctorRole;
+import com.Business.Role.RoadSafetyRole;
 import com.Business.Role.Role;
 import java.util.HashSet;
 
@@ -18,7 +18,7 @@ public class RoadSafetyEnt extends Enterprise{
     @Override
     public HashSet<Role> getSupportedRole(){
        
-        role.add(new DoctorRole());
+        role.add(new RoadSafetyRole());
      
         return role;
         

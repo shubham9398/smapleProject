@@ -8,14 +8,14 @@ package com.UI.CommunityEnterprise;
 import com.Business.Ecosystem;
 import com.Business.Employee.Employee;
 import com.Business.Enterprise.Enterprise;
-import com.Business.Organization.EventMakerOrg;
+import com.Business.Organization.GovernmentOrg;
 import com.Business.Organization.Organization;
-import com.Business.Organization.VictimOrg;
 import com.Business.Organization.VolunteerOrg;
-import com.Business.Role.EventMakerAdminRole;
+import com.Business.Organization.WorkerOrg;
+import com.Business.Role.GovernmentAdminRole;
 import com.Business.Role.Role;
-import com.Business.Role.VictimAdminRole;
 import com.Business.Role.VolunteerAdminRole;
+import com.Business.Role.WorkerAdminRole;
 import com.Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -61,12 +61,12 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof EventMakerOrg){
-            comboRole.addItem(new EventMakerAdminRole());        
-        }else if(organization instanceof VictimOrg){
-            comboRole.addItem(new VictimAdminRole());
+        if(organization instanceof GovernmentOrg){
+            comboRole.addItem(new GovernmentAdminRole());        
         }else if(organization instanceof VolunteerOrg){
             comboRole.addItem(new VolunteerAdminRole());
+        }else if(organization instanceof WorkerOrg){
+            comboRole.addItem(new WorkerAdminRole());
         }
       
     }

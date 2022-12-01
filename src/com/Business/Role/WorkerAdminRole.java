@@ -13,7 +13,7 @@ import com.UI.WorkerOrganization.WorkerAdminDashboard;
 import javax.swing.JPanel;
 
 
-public class VolunteerAdminRole extends Role{
+public class WorkerAdminRole extends Role{
     //overriding main panel with volunteer admin work area whenever volunteer admin role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){

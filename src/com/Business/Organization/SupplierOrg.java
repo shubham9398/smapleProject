@@ -6,15 +6,15 @@
 package com.Business.Organization;
 
 import com.Business.Supplier.SupplierDir;
-import com.Business.Role.ProviderRole;
+import com.Business.Role.SupplierRole;
 import com.Business.Role.Role;
 import java.util.HashSet;
 
 
-public class ProviderOrg extends Organization{
+public class SupplierOrg extends Organization{
     SupplierDir providerList;
     //constructor to add provider list to provider directory
-    public ProviderOrg(String name) {
+    public SupplierOrg(String name) {
         super(Organization.Type.Provider.getValue());
         providerList= new SupplierDir();
       
@@ -34,7 +34,7 @@ public class ProviderOrg extends Organization{
     @Override
     public HashSet<Role> getSupportedRole(){
        
-        role.add(new ProviderRole());
+        role.add(new SupplierRole());
         return role;
     }
 }

@@ -9,8 +9,8 @@ import com.Business.Ecosystem;
 import com.Business.Enterprise.Enterprise;
 import com.Business.Organization.Organization;
 import com.Business.UserAccount.UserAccount;
-import com.Business.WorkQueue.NGOWorkReq;
-import com.Business.WorkQueue.VictimWorkReq;
+import com.Business.WorkQueue.ContractorWorkReq;
+import com.Business.WorkQueue.VolunteerWorkReq;
 import com.Business.WorkQueue.WorkReq;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -67,14 +67,14 @@ public class ContractorManagerDashboard extends javax.swing.JPanel {
         
         
         for (WorkReq work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof NGOWorkReq){ 
+           if(work instanceof ContractorWorkReq){ 
             Object[] row = new Object[10];
             row[0] = work;
-            row[1] = ((NGOWorkReq) work).getDescription();
+            row[1] = ((ContractorWorkReq) work).getDescription();
             row[2] =  work.getRequestDate();
-            row[3] = ((NGOWorkReq) work).getLocation();
-            row[4] = ((NGOWorkReq) work).getvRequired();
-            row[5] = ((NGOWorkReq) work).getvAcquired();
+            row[3] = ((ContractorWorkReq) work).getLocation();
+            row[4] = ((ContractorWorkReq) work).getvRequired();
+            row[5] = ((ContractorWorkReq) work).getvAcquired();
             
             model.addRow(row);
            }
@@ -88,7 +88,7 @@ public class ContractorManagerDashboard extends javax.swing.JPanel {
         
         
         for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkReq){
+           if(work instanceof VolunteerWorkReq){
                if(work.getStatusList() != null){
                //if((work.getStatus().equalsIgnoreCase("Assigned To Contractor"))||(work.getStatus().equalsIgnoreCase("Contractor undertook the Request")) || work.getStatusList().contains("Contractor") || !(work.getStatus().equalsIgnoreCase("Complete")) ){
                if(work.getStatusList().contains("Contractor") && !(work.getStatus().equalsIgnoreCase("Complete")) ){
@@ -97,8 +97,8 @@ public class ContractorManagerDashboard extends javax.swing.JPanel {
             Object[] row = new Object[10];
             row[0] = work.getSender().getEmployee().getEmployeeName();
             row[1] = work.getSubject();
-            row[2] = ((VictimWorkReq) work).getDescription();
-            row[3] = ((VictimWorkReq) work).getLocation();
+            row[2] = ((VolunteerWorkReq) work).getDescription();
+            row[3] = ((VolunteerWorkReq) work).getLocation();
             row[4] = work.getRequestDate();
             row[5] = work;
             row[6] = work.getReciever();
@@ -464,10 +464,10 @@ public class ContractorManagerDashboard extends javax.swing.JPanel {
         DefaultCategoryDataset d = new DefaultCategoryDataset();
 
         for (WorkReq work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof NGOWorkReq)
+           if(work instanceof ContractorWorkReq)
            {
             
-               d.setValue(((NGOWorkReq) work).getvAcquired(),"Event List",((NGOWorkReq) work).getTitle());
+               d.setValue(((ContractorWorkReq) work).getvAcquired(),"Event List",((ContractorWorkReq) work).getTitle());
              
         }
         }
@@ -519,7 +519,7 @@ public class ContractorManagerDashboard extends javax.swing.JPanel {
             return;
         }
         
-        NGOWorkReq reqst = new NGOWorkReq();
+        ContractorWorkReq reqst = new ContractorWorkReq();
         reqst.setTitle(event);
         reqst.setDescription(desp);
         reqst.setLocation(location);
@@ -548,7 +548,7 @@ public class ContractorManagerDashboard extends javax.swing.JPanel {
         } 
          
         else {
-            VictimWorkReq cswr = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
+            VolunteerWorkReq cswr = (VolunteerWorkReq) tblRequests.getValueAt(selectedRow, 5);
 
             if(cswr.getStatusList().contains("Contractor") ){
             cswr.setStatus("Contractor undertook the Request");
@@ -570,7 +570,7 @@ public class ContractorManagerDashboard extends javax.swing.JPanel {
         } 
         else {
 
-            VictimWorkReq p = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
+            VolunteerWorkReq p = (VolunteerWorkReq) tblRequests.getValueAt(selectedRow, 5);
             if(p.getStatus().equalsIgnoreCase("Contractor undertook the Request") || p.getStatusList().contains("Contractor")){
                     p.setStatus("Complete");
                     

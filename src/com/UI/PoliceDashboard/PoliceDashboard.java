@@ -10,7 +10,7 @@ import com.Business.Enterprise.Enterprise;
 import com.Business.Organization.Organization;
 import com.Business.Organization.PoliceOrg;
 import com.Business.UserAccount.UserAccount;
-import com.Business.WorkQueue.VictimWorkReq;
+import com.Business.WorkQueue.VolunteerWorkReq;
 import com.Business.WorkQueue.WorkReq;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -51,7 +51,7 @@ public class PoliceDashboard extends javax.swing.JPanel {
         
         
         for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkReq){
+           if(work instanceof VolunteerWorkReq){
                if(work.getStatusList() != null){
                if((work.getStatus().equalsIgnoreCase("Assigned To Police"))||(work.getStatus().equalsIgnoreCase("Police undertook the Request")) || work.getStatusList().contains("Police") ){
                    
@@ -59,8 +59,8 @@ public class PoliceDashboard extends javax.swing.JPanel {
             Object[] row = new Object[10];
             row[0] = work.getSender().getEmployee().getEmployeeName();
             row[1] = work.getSubject();
-            row[2] = ((VictimWorkReq) work).getDescription();
-            row[3] = ((VictimWorkReq) work).getLocation();
+            row[2] = ((VolunteerWorkReq) work).getDescription();
+            row[3] = ((VolunteerWorkReq) work).getLocation();
             row[4] = work.getRequestDate();
             row[5] = work;
             row[6] = work.getReciever();
@@ -212,7 +212,7 @@ public class PoliceDashboard extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkReq cswr = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
+            VolunteerWorkReq cswr = (VolunteerWorkReq) tblRequests.getValueAt(selectedRow, 5);
             //if(cswr.getStatus().equalsIgnoreCase("Assigned To Police")){ 
             if(cswr.getStatusList().contains("Police") ){ 
             cswr.setStatus("Police undertook the Request");
@@ -233,7 +233,7 @@ public class PoliceDashboard extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkReq p = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
+            VolunteerWorkReq p = (VolunteerWorkReq) tblRequests.getValueAt(selectedRow, 5);
             
             if(p.getStatus().equalsIgnoreCase("Completed")){ 
                 p.setStatus("Completed");

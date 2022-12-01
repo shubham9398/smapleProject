@@ -8,10 +8,10 @@ package com.UI.Government;
 import com.Business.Ecosystem;
 import com.Business.Employee.Employee;
 import com.Business.Enterprise.Enterprise;
-import com.Business.Government.EventMaker;
-import com.Business.Organization.EventMakerOrg;
+import com.Business.Government.Government;
+import com.Business.Organization.GovernmentOrg;
 import com.Business.Organization.Organization;
-import com.Business.Role.EventMakerRole;
+import com.Business.Role.GovernmentRole;
 import com.Business.Role.Role;
 import com.Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -43,7 +43,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
         comboOrg.removeAllItems();
 
         for (Organization organization : enterprise.getOrganizationDir().getOrganizationList()) {
-            if(organization instanceof EventMakerOrg)
+            if(organization instanceof GovernmentOrg)
             comboOrg.addItem(organization);
             
         }
@@ -60,8 +60,8 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof EventMakerOrg){
-            comboRole.addItem(new EventMakerRole());
+        if(organization instanceof GovernmentOrg){
+            comboRole.addItem(new GovernmentRole());
         
         }
       
@@ -333,12 +333,12 @@ public class ManageUserAccount extends javax.swing.JPanel {
         Role role = (Role) comboRole.getSelectedItem();
         
         
-        if (organization instanceof EventMakerOrg){
-           EventMaker cm= new EventMaker();
+        if (organization instanceof GovernmentOrg){
+           Government cm= new Government();
             
            cm.setName(employee.getEmployeeName());
            
-           ((EventMakerOrg) organization).getChangemakerlist().getChangeMakerDirectory().add(cm);
+           ((GovernmentOrg) organization).getChangemakerlist().getChangeMakerDirectory().add(cm);
           
         }
         organization.getUserAccountDir().createUserAccount(userName, password, employee, role);

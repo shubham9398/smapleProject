@@ -10,11 +10,11 @@ import com.Business.Employee.Employee;
 import com.Business.Enterprise.Enterprise;
 import com.Business.Network.Network;
 import com.Business.Role.CommunityAdminRole;
-import com.Business.Role.DoctorAdminRole;
+import com.Business.Role.RoadSafetyAdminRole;
 import com.Business.Role.FireManAdminRole;
-import com.Business.Role.NGOAdminRole;
+import com.Business.Role.ContractorAdminRole;
 import com.Business.Role.PoliceAdminRole;
-import com.Business.Role.ProviderAdminRole;
+import com.Business.Role.SupplierAdminRole;
 import com.Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -254,7 +254,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         );
 
         btnBack.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/CommunityEnterprise/back.png"))); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backButtonRegister.png"))); // NOI18N
         btnBack.setBorderPainted(false);
         btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -341,14 +341,14 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Community) {
                 account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new CommunityAdminRole());
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
-                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new NGOAdminRole());
+                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new ContractorAdminRole());
             
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Provider) {
-                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new ProviderAdminRole());
+                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new SupplierAdminRole());
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Police) {
                 account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new PoliceAdminRole());
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
-                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new DoctorAdminRole());
+                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new RoadSafetyAdminRole());
             }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.FireMan) {
                 account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new FireManAdminRole());
             }

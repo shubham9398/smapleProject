@@ -9,11 +9,11 @@ import com.Business.Ecosystem;
 import com.Business.Employee.Employee;
 import com.Business.Enterprise.Enterprise;
 import com.Business.Organization.Organization;
-import com.Business.Organization.VictimOrg;
+import com.Business.Organization.VolunteerOrg;
 import com.Business.Role.Role;
-import com.Business.Role.VictimRole;
+import com.Business.Role.VolunteerRole;
 import com.Business.UserAccount.UserAccount;
-import com.Business.Volunteer.Victim;
+import com.Business.Volunteer.Volunteer;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -43,7 +43,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
         comboOrg.removeAllItems();
 
         for (Organization organization : enterprise.getOrganizationDir().getOrganizationList()) {
-            if(organization instanceof VictimOrg)
+            if(organization instanceof VolunteerOrg)
             comboOrg.addItem(organization);
             
         }
@@ -60,8 +60,8 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof VictimOrg){
-            comboRole.addItem(new VictimRole());
+        if(organization instanceof VolunteerOrg){
+            comboRole.addItem(new VolunteerRole());
         
         }
       
@@ -323,12 +323,12 @@ public class ManageUserAccount extends javax.swing.JPanel {
         Role role = (Role) comboRole.getSelectedItem();
         
         
-        if (organization instanceof VictimOrg){
-           Victim vm = new Victim();
+        if (organization instanceof VolunteerOrg){
+           Volunteer vm = new Volunteer();
             
            vm.setVictimName(employee.getEmployeeName());
            
-           ((VictimOrg) organization).getChangeseekerlist().getChangeSeekerDir().add(vm);
+           ((VolunteerOrg) organization).getChangeseekerlist().getChangeSeekerDir().add(vm);
           
         }
         organization.getUserAccountDir().createUserAccount(userName, password, employee, role);

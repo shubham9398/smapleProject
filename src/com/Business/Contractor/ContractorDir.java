@@ -8,31 +8,31 @@ package com.Business.Contractor;
 import java.util.ArrayList;
 
 
-public class NGODir {
-    private ArrayList<NGO> ngoDirectory;
+public class ContractorDir {
+    private ArrayList<Contractor> ngoDirectory;
 
-    public NGODir() {
+    public ContractorDir() {
     ngoDirectory= new ArrayList<>();
     }
     
-    //get NGO directory
+    //get Contractor directory
 
-    public ArrayList<NGO> getNgoDirectory() {
+    public ArrayList<Contractor> getNgoDirectory() {
         return ngoDirectory;
     }
 
-    public void setNgoDirectory(ArrayList<NGO> ngoDirectory) {
+    public void setNgoDirectory(ArrayList<Contractor> ngoDirectory) {
         this.ngoDirectory = ngoDirectory;
     }
-    //add a NGO
+    //add a Contractor
     
-    //remove a NGO
-    public void removeNGO(NGO ngo){
+    //remove a Contractor
+    public void removeNGO(Contractor ngo){
         ngoDirectory.remove(ngo);   
     }
     
-    public NGO addNGO(){
-        NGO ngo =new NGO();
+    public Contractor addNGO(){
+        Contractor ngo =new Contractor();
         ngoDirectory.add(ngo);
         return ngo;
     }

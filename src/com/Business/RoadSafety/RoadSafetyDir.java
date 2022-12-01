@@ -8,32 +8,32 @@ package com.Business.RoadSafety;
 import java.util.ArrayList;
 
 
-public class HospitalDir {
-    private ArrayList<Hospital> hospitalDir;
+public class RoadSafetyDir {
+    private ArrayList<RoadSafety> hospitalDir;
     
     
     //new hospital diretory
-    public HospitalDir() {
+    public RoadSafetyDir() {
     hospitalDir= new ArrayList();
     }
 
-    public ArrayList<Hospital> getHospitalDir() {
+    public ArrayList<RoadSafety> getHospitalDir() {
         return hospitalDir;
     }
 
     
     //add a new doctor
-    public Hospital addHospital(){
-        Hospital h =new Hospital();
+    public RoadSafety addHospital(){
+        RoadSafety h =new RoadSafety();
         hospitalDir.add(h);
         return h;
     }
     
-    public void setHospitalDir(ArrayList<Hospital> hospitalDir) {
+    public void setHospitalDir(ArrayList<RoadSafety> hospitalDir) {
         this.hospitalDir = hospitalDir;
     }
     //remove a doctor
-    public void removeHospital(Hospital hospital){
+    public void removeHospital(RoadSafety hospital){
         hospitalDir.remove(hospital);   
     }
     

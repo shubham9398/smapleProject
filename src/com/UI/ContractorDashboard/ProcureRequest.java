@@ -10,7 +10,7 @@ import com.Business.Enterprise.Enterprise;
 import com.Business.Organization.Organization;
 import com.Business.Supplier.Supplier;
 import com.Business.UserAccount.UserAccount;
-import com.Business.WorkQueue.ProviderWorkReq;
+import com.Business.WorkQueue.SupplierWorkReq;
 import com.Business.WorkQueue.WorkReq;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -59,11 +59,11 @@ public class ProcureRequest extends javax.swing.JPanel {
         
        
         for (WorkReq work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof ProviderWorkReq){ 
+           if(work instanceof SupplierWorkReq){ 
             Object[] row = new Object[10];
-            row[0] = ((ProviderWorkReq) work).getRtype();
-            row[1] = ((ProviderWorkReq) work).getReq();
-            row[2] = ((ProviderWorkReq) work).getQuantity();
+            row[0] = ((SupplierWorkReq) work).getRtype();
+            row[1] = ((SupplierWorkReq) work).getReq();
+            row[2] = ((SupplierWorkReq) work).getQuantity();
             row[3] = work;
             row[4] = work.getSender();
             
@@ -295,7 +295,7 @@ public class ProcureRequest extends javax.swing.JPanel {
             return;
         }
         
-        ProviderWorkReq rqst = new ProviderWorkReq();
+        SupplierWorkReq rqst = new SupplierWorkReq();
         
         rqst.setRtype(rType);
         rqst.setReq(req);
@@ -327,20 +327,20 @@ public class ProcureRequest extends javax.swing.JPanel {
         int m=0;
         int n=0;
         for (WorkReq work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof ProviderWorkReq)
+           if(work instanceof SupplierWorkReq)
            {
               
-              if(((ProviderWorkReq) work).getRtype().equals("Food")){
-                  b=b+((ProviderWorkReq) work).getQuantity();
+              if(((SupplierWorkReq) work).getRtype().equals("Food")){
+                  b=b+((SupplierWorkReq) work).getQuantity();
               }
-              if(((ProviderWorkReq) work).getRtype().equals("Clothes")){
-                  c=c+((ProviderWorkReq) work).getQuantity();
+              if(((SupplierWorkReq) work).getRtype().equals("Clothes")){
+                  c=c+((SupplierWorkReq) work).getQuantity();
               }
-              if(((ProviderWorkReq) work).getRtype().equals("Medicine")){
-                  m=m+((ProviderWorkReq) work).getQuantity();
+              if(((SupplierWorkReq) work).getRtype().equals("Medicine")){
+                  m=m+((SupplierWorkReq) work).getQuantity();
               }
-              if(((ProviderWorkReq) work).getRtype().equals("Education")){
-                  n=n+((ProviderWorkReq) work).getQuantity();
+              if(((SupplierWorkReq) work).getRtype().equals("Education")){
+                  n=n+((SupplierWorkReq) work).getQuantity();
               }
            }
         }

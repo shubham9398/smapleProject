@@ -8,11 +8,11 @@ package com.Business.Government;
 import java.util.ArrayList;
 
 
-public class EventMakerDir {
+public class GovernmentDir {
     
-private ArrayList<EventMaker> eventMakerDirectory;
+private ArrayList<Government> eventMakerDirectory;
 
-    public EventMakerDir() {
+    public GovernmentDir() {
         eventMakerDirectory= new ArrayList<>();
     }
     
@@ -20,20 +20,20 @@ private ArrayList<EventMaker> eventMakerDirectory;
 
     
 
-    public void setChangeMakerDirectory(ArrayList<EventMaker> changeMakerDirectory) {
+    public void setChangeMakerDirectory(ArrayList<Government> changeMakerDirectory) {
         this.eventMakerDirectory = changeMakerDirectory;
     }
     
     //add an event maker
-    public EventMaker addChangeMaker(){
-        EventMaker cm = new EventMaker();
+    public Government addChangeMaker(){
+        Government cm = new Government();
         eventMakerDirectory.add(cm);
         return cm;
     }
     //remove an event maker
    
     
-    public ArrayList<EventMaker> getChangeMakerDirectory() {
+    public ArrayList<Government> getChangeMakerDirectory() {
         return eventMakerDirectory;
     }
     
@@ -41,7 +41,7 @@ private ArrayList<EventMaker> eventMakerDirectory;
     //
     
     
-     public void removeChangeMaker(EventMaker cm){
+     public void removeChangeMaker(Government cm){
         eventMakerDirectory.remove(cm);
     }
     

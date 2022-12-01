@@ -5,28 +5,28 @@
  */
 package com.Business.Organization;
 
-import com.Business.Government.EventMakerDir;
-import com.Business.Role.EventMakerRole;
+import com.Business.Government.GovernmentDir;
+import com.Business.Role.GovernmentRole;
 import com.Business.Role.Role;
 import java.util.HashSet;
 
 
-public class EventMakerOrg extends Organization {
+public class GovernmentOrg extends Organization {
     
-    EventMakerDir eventMakerList;
+    GovernmentDir eventMakerList;
     //constructor to add event maker list to Event Maker directory
-    public EventMakerOrg()
+    public GovernmentOrg()
     {
         super(Organization.Type.EventMaker.getValue());
-        eventMakerList= new EventMakerDir();
+        eventMakerList= new GovernmentDir();
     }
     
-     public void setChangemakerlist(EventMakerDir eventmakerlist) {
+     public void setChangemakerlist(GovernmentDir eventmakerlist) {
         this.eventMakerList = eventmakerlist;
     }
     
 
-    public EventMakerDir getChangemakerlist() {
+    public GovernmentDir getChangemakerlist() {
         return eventMakerList;
     }
 
@@ -34,7 +34,7 @@ public class EventMakerOrg extends Organization {
     //hash map to support event maker role
     @Override
     public HashSet<Role> getSupportedRole(){
-       role.add(new EventMakerRole());
+       role.add(new GovernmentRole());
        return role;
        
     }

@@ -42,12 +42,12 @@ public class GoogleMapsViewer extends JFXPanel {
     }
 
 
-    public void addMarker(Marker marker) {
-
-        Platform.runLater(() -> {
-            engine.executeScript("addMarker(" + marker.getLat() + "," + marker.getLng() + ",'" + marker.getLabel() + "','" + marker.getInfo() + "'" + ")");
-        });
-    }
+//    public void addMarker(Marker marker) {
+//
+//        Platform.runLater(() -> {
+//            engine.executeScript("addMarker(" + marker.getLat() + "," + marker.getLng() + ",'" + marker.getLabel() + "','" + marker.getInfo() + "'" + ")");
+//        });
+//    }
     
     
 

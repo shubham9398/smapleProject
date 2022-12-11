@@ -14,7 +14,13 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.VictimWorkReq;
 import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkReq;
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.engine.EngineOptions;
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+import com.teamdev.jxbrowser.view.swing.BrowserView;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -34,7 +40,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Ecosystem system;
     EventMaker em;
-    
+    Browser browser;
     public EventMakerWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
@@ -100,6 +106,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         txtLoc = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btnViewMap = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         btnPolice = new javax.swing.JButton();
@@ -130,6 +137,8 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                 .addGap(0, 0, 0))
         );
 
+        add(jPanel1);
+
         tblEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblEvent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -154,6 +163,8 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblEvent);
 
+        add(jScrollPane1);
+
         btnView.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
         btnView.setForeground(new java.awt.Color(153, 0, 153));
         btnView.setText("View");
@@ -162,6 +173,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                 btnViewActionPerformed(evt);
             }
         });
+        add(btnView);
 
         btnAssignTo.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
         btnAssignTo.setForeground(new java.awt.Color(153, 0, 153));
@@ -171,6 +183,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                 btnAssignToActionPerformed(evt);
             }
         });
+        add(btnAssignTo);
 
         btnComplete.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
         btnComplete.setForeground(new java.awt.Color(153, 0, 153));
@@ -180,6 +193,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                 btnCompleteActionPerformed(evt);
             }
         });
+        add(btnComplete);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "View", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(153, 0, 153))); // NOI18N
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,6 +225,13 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(153, 0, 153));
         jLabel3.setText("Description");
 
+        btnViewMap.setText("view");
+        btnViewMap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewMapActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -224,18 +245,26 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtSubject)
-                    .addComponent(txtLoc)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnViewMap, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(btnViewMap, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -245,6 +274,8 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
+
+        add(jPanel2);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Relay Request To", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(153, 0, 153))); // NOI18N
         jPanel4.setOpaque(false);
@@ -335,54 +366,8 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnAssignTo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(125, 125, 125)
-                        .addComponent(displayImage, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(208, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAssignTo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(displayImage, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 20, Short.MAX_VALUE))
-        );
+        add(jPanel4);
+        add(displayImage);
     }// </editor-fold>//GEN-END:initComponents
     //assign the request to me
     private void btnAssignToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToActionPerformed
@@ -562,6 +547,28 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnFireActionPerformed
 
+    private void btnViewMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewMapActionPerformed
+         if(!txtLoc.getText().isEmpty())
+        {
+        EngineOptions options =
+                EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("6P830J66YBX6CYSF5CI0H165KTZQ2P2ZJX9TV55F30X4I1I6WQQ8JP2D21LYG0LUXGJB").build();
+        Engine engine = Engine.newInstance(options);
+        browser = engine.newBrowser();
+        BrowserView view = BrowserView.newInstance(browser);
+        browser.navigation().loadUrl("https://www.google.com/maps/search/"+txtLoc.getText()+"/@"+txtLoc.getText());
+        
+        JFrame mapsPanel = new JFrame();
+        
+        mapsPanel.add(view);
+        
+        mapsPanel.setVisible(true);
+        }
+        else {
+                                 JOptionPane.showMessageDialog(null, "Please select a location first", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        }
+    }//GEN-LAST:event_btnViewMapActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignTo;
@@ -571,6 +578,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton btnNGO;
     private javax.swing.JButton btnPolice;
     private javax.swing.JButton btnView;
+    private javax.swing.JButton btnViewMap;
     private javax.swing.JLabel displayImage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

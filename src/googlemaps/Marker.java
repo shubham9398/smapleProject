@@ -11,65 +11,31 @@ package googlemaps;
  */
 public class Marker {
     
-    private String info;
-    private String label;
-    private String lat;
-    private String lng;
+   private String longitude;
+ private String latitude;
+ private String name;
 
-    /**
-     * @return the info
-     */
-    public String getInfo() {
-        return info;
+    public String getLongitude() {
+        return longitude;
     }
 
-    /**
-     * @param info the info to set
-     */
-    public void setInfo(String info) {
-        this.info = info;
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
-    /**
-     * @return the label
-     */
-    public String getLabel() {
-        return label;
+    public String getLatitude() {
+        return latitude;
     }
 
-    /**
-     * @param label the label to set
-     */
-    public void setLabel(String label) {
-        this.label = label;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
-    /**
-     * @return the lat
-     */
-    public String getLat() {
-        return lat;
+    public String getName() {
+        return name;
     }
 
-    /**
-     * @param lat the lat to set
-     */
-    public void setLat(String lat) {
-        this.lat = lat;
+    public void setName(String name) {
+        this.name = name;
     }
-
-    /**
-     * @return the lng
-     */
-    public String getLng() {
-        return lng;
-    }
-
-    /**
-     * @param lng the lng to set
-     */
-    public void setLng(String lng) {
-        this.lng = lng;
-    }
-    
 }

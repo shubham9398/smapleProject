@@ -30,6 +30,14 @@ import javax.swing.JOptionPane;
 import java.awt.Image;
 import java.io.File;
 
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.engine.EngineOptions;
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+import com.teamdev.jxbrowser.view.swing.BrowserView;
+import googlemaps.Marker;
+
+
 /**
  *
  * @author vidhi
@@ -46,7 +54,9 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
     private Ecosystem system;
     ImageIcon imageIcon;
     EventMaker em;
+    Browser browser;
     
+    Marker marker;
     public EventSeekerWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
@@ -54,6 +64,8 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
         this.organization=organization;
         this.enterprise=enterprise;
         this.system=system;
+        
+        marker=new Marker();
 
         populateTableWorkQueue();
     }
@@ -104,6 +116,7 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         imgLabel = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        btnSetMapPointer = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 204, 204));
 
@@ -191,6 +204,13 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
             }
         });
 
+        btnSetMapPointer.setText("Set Pointer");
+        btnSetMapPointer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetMapPointerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -204,12 +224,15 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSetMapPointer)))
                 .addGap(69, 69, 69)
                 .addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
@@ -223,10 +246,12 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnSetMapPointer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,7 +289,7 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(339, 339, 339)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1098, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(446, Short.MAX_VALUE))
+                .addContainerGap(430, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,18 +348,33 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        GoogleMapsViewer gmv=new GoogleMapsViewer();
+//        GoogleMapsViewer gmv=new GoogleMapsViewer();
+//        JFrame mapsPanel = new JFrame();
+//        mapsPanel.setBounds(10,10,700,600); 
+//        mapsPanel.setTitle("Google Maps");
+//        mapsPanel.setResizable(false);
+//        
+//        gmv.setSize(mapsPanel.getSize());
+//        mapsPanel.add(gmv);
+//        gmv.loadMap("html/maps.html");
+//        
+//        
+//        mapsPanel.setVisible(true);
+
+           EngineOptions options =
+                EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("6P830J66YBX6CYSF5CI0H165KTZQ2P2ZJX9TV55F30X4I1I6WQQ8JP2D21LYG0LUXGJB").build();
+        Engine engine = Engine.newInstance(options);
+        browser = engine.newBrowser();
+        BrowserView view = BrowserView.newInstance(browser);
+        browser.navigation().loadUrl("https://www.google.com/maps");
+        
         JFrame mapsPanel = new JFrame();
-        mapsPanel.setBounds(10,10,700,600); 
-        mapsPanel.setTitle("Google Maps");
-        mapsPanel.setResizable(false);
         
-        gmv.setSize(mapsPanel.getSize());
-        mapsPanel.add(gmv);
-        gmv.loadMap("html/maps.html");
-        
+        mapsPanel.add(view);
         
         mapsPanel.setVisible(true);
+
+          
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -359,12 +399,40 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
         imgLabel.setIcon(imgProfile);
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnSetMapPointerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetMapPointerActionPerformed
+       if (browser.url()!= null) {
+            
+            
+            
+
+                System.out.println(browser.url());
+                String[] a = browser.url().split("@", 0);
+                
+                System.out.println(a);
+                String[] b = a[1].split(",");
+                String target = b[0]+","+b[1];
+                
+//                System.out.println("Lat" + b[0] + "  " + "Lon" + b[1]);
+//                double lat = Double.parseDouble(b[0]);
+//                double lon = Double.parseDouble(b[1]);
+                
+                txtLoc.setText(target);
+                
+                
+                
+               
+               
+                
+                
+            }
+    }//GEN-LAST:event_btnSetMapPointerActionPerformed
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnImage;
     private javax.swing.JButton btnPost;
+    private javax.swing.JButton btnSetMapPointer;
     private javax.swing.JLabel imgLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -376,7 +444,6 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblImage;
     private javax.swing.JTable tblEvent;
     private javax.swing.JTextArea txtDesc;
     private javax.swing.JTextField txtLoc;

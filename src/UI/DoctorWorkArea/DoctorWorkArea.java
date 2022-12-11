@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package UI.DoctorWorkArea;
-
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrg;
@@ -89,9 +88,9 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         tblRequests = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
-        jPanel2.setBackground(new java.awt.Color(243, 235, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
 
-        jPanel3.setBackground(new java.awt.Color(113, 88, 205));
+        jPanel3.setBackground(new java.awt.Color(255, 153, 153));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,8 +111,8 @@ public class DoctorWorkArea extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnAssign.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnAssign.setForeground(new java.awt.Color(153, 0, 153));
+        btnAssign.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnAssign.setForeground(new java.awt.Color(255, 0, 0));
         btnAssign.setText("Acknowledge");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,8 +120,8 @@ public class DoctorWorkArea extends javax.swing.JPanel {
             }
         });
 
-        btnComplete.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnComplete.setForeground(new java.awt.Color(153, 0, 153));
+        btnComplete.setFont(new java.awt.Font("Tamil MN", 0, 18)); // NOI18N
+        btnComplete.setForeground(new java.awt.Color(255, 0, 0));
         btnComplete.setText("Responded");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,8 +149,8 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblRequests);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 0, 153));
-        jLabel2.setText("Welcome, You're logged in as Doctor.");
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("Hi..,Logged in as Doctor.");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -159,18 +158,19 @@ public class DoctorWorkArea extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(173, 173, 173)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(142, 142, 142)
-                        .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1507, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(220, Short.MAX_VALUE))
+                        .addGap(572, 572, 572)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(431, 431, 431)
+                        .addComponent(btnAssign)
+                        .addGap(171, 171, 171)
+                        .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1802, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,12 +180,12 @@ public class DoctorWorkArea extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel2)
                 .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(203, Short.MAX_VALUE))
+                    .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(190, 190, 190))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

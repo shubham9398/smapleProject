@@ -106,7 +106,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         btnFire = new javax.swing.JButton();
         btnNGO = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(243, 235, 255));
+        setBackground(new java.awt.Color(255, 204, 204));
 
         jPanel1.setBackground(new java.awt.Color(113, 88, 205));
 

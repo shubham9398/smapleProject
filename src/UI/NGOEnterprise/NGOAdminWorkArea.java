@@ -53,7 +53,7 @@ public class NGOAdminWorkArea extends javax.swing.JPanel {
         btnManageOrganization = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(243, 235, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         jPanel2.setBackground(new java.awt.Color(113, 88, 205));
 

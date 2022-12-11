@@ -88,8 +88,6 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblEvent = new javax.swing.JTable();
         btnView = new javax.swing.JButton();
         btnAssignTo = new javax.swing.JButton();
         btnComplete = new javax.swing.JButton();
@@ -102,6 +100,8 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnViewMap = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblEvent = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         btnPolice = new javax.swing.JButton();
@@ -133,32 +133,6 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         );
 
         add(jPanel1);
-
-        tblEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tblEvent.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Event Name", "Subject", "Description", "Location", "Date", "Status", "Event Maker"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblEvent);
-
-        add(jScrollPane1);
 
         btnView.setFont(new java.awt.Font("Segoe UI", 0, 28)); // NOI18N
         btnView.setForeground(new java.awt.Color(153, 0, 153));
@@ -272,6 +246,32 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
 
         add(jPanel2);
 
+        tblEvent.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblEvent.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Event Name", "Subject", "Description", "Location", "Date", "Status", "Event Maker"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblEvent);
+
+        add(jScrollPane1);
+
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Relay Request To", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(153, 0, 153))); // NOI18N
         jPanel4.setOpaque(false);
 
@@ -322,9 +322,9 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnPolice, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addGap(20, 20, 20)
                 .addComponent(btnFire, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

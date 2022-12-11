@@ -14,6 +14,7 @@ import Business.Provider.Supplier;
 import Business.UserAccount.UserAccount;
 import Business.Victim.Victim;
 import Business.Volunteer.Volunteer;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -32,7 +33,10 @@ public abstract class WorkReq {
     private Volunteer volunteer;
     private Police police;
     private FireMan fireman;
+    private ArrayList<String> statusList; 
 
+    
+    
     public FireMan getFireman() {
         return fireman;
     }
@@ -45,6 +49,7 @@ public abstract class WorkReq {
     
     public WorkReq(){
         requestDate = new Date();
+        this.statusList = new ArrayList<>();
     }
     
     public Police getPolice() {
@@ -164,6 +169,13 @@ public abstract class WorkReq {
     }
 
    
+    public ArrayList<String> getStatusList() {
+        return statusList;
+    }
+
+    public void setStatusList(ArrayList<String> statusList) {
+        this.statusList = statusList;
+    }
 
     @Override
     public String toString(){

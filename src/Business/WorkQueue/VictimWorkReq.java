@@ -5,11 +5,18 @@
  */
 package Business.WorkQueue;
 
+import javax.swing.ImageIcon;
 
-public class VictimWorkReq extends WorkReq{
+/**
+ *
+ * @author vidhi
+ */
+public class VictimWorkRequest extends WorkRequest{
     private String Description;
     private String Location;
     private boolean add;
+    private ImageIcon imageIcon;
+    
     
     public VictimWorkReq() {
         
@@ -42,4 +49,15 @@ public class VictimWorkReq extends WorkReq{
     public String getLocation() {
         return Location;
     }
+
+    public ImageIcon getImageIcon() {
+        return imageIcon;
+    }
+
+    public void setImageIcon(ImageIcon imageIcon) {
+        this.imageIcon = imageIcon;
+    }
+    
+    
+    
 }

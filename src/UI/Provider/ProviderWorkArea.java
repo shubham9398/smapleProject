@@ -93,7 +93,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
             model.addRow(row);
             }
             
-    } 
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -370,34 +370,41 @@ public class ProviderWorkArea extends javax.swing.JPanel {
             ProviderWorkReq pwr = (ProviderWorkReq) tblProvideReq.getValueAt(selectedRow, 3);
             if (pwr.getReciever() != null) {
                 if (pwr.getStatus().equals("Pending")) {
-                    UserAccount a = pwr.getSender();
-                    int temp = 0;
-                    if (p.getItemDir().getSupplyList().size() <= 0) {
-                        JOptionPane.showMessageDialog(null, "No Stock available. Request from Provider");
-                        return;
-                    }
-                    for (Item item : p.getItemDir().getSupplyList()) {
-                       
-                        if (pwr.getReq().equals(item.getRequirement())&& pwr.getRtype().equals(item.getRequirementType())) {
-                            
-                            if (item.getQuantity() - pwr.getQuantity() < 0) {
-                                JOptionPane.showMessageDialog(null, "Not enough supply. Wait for sometime");
-                                return;
-                            }
-                            item.setQuantity(item.getQuantity() - pwr.getQuantity());
-                           temp = 1;
-                        }   
-                    }
-                   
-                    if(temp==1){
+//                    UserAccount a = pwr.getSender();
+//                    int temp = 0;
+//                    if (p.getItemDirectory().getSupplyList().size() <= 0) {
+//                        JOptionPane.showMessageDialog(null, "No Stock available. Request from Provider");
+//                        return;
+//                    }
+//                    for (Item item : p.getItemDirectory().getSupplyList()) {
+//                       
+//                        if (pwr.getReq().equals(item.getRequirement())&& pwr.getRtype().equals(item.getRequirementType())) {
+//                            
+//                            if (item.getQuantity() - pwr.getQuantity() < 0) {
+//                                JOptionPane.showMessageDialog(null, "Not enough supply. Wait for sometime");
+//                                return;
+//                            }
+//                            item.setQuantity(item.getQuantity() - pwr.getQuantity());
+//                           temp = 1;
+//                        }   
+//                    }
+//                   
+//                    if(temp==1){
+//                    pwr.setStatus("Complete");
+//                    JOptionPane.showMessageDialog(null, "You have completed the request successfully");
+//                    }else{
+//                    pwr.setStatus("Requested");   
+//                    JOptionPane.showMessageDialog(null, "No Stock Available, Request Failed !!","Warning",JOptionPane.WARNING_MESSAGE);
+//                    }
+//                    populateTableSupply();
+//                    populateTableCreate();
+
+
                     pwr.setStatus("Complete");
                     JOptionPane.showMessageDialog(null, "You have completed the request successfully");
-                    }else{
-                    pwr.setStatus("Requested");   
-                    JOptionPane.showMessageDialog(null, "No Stock Available, Request Failed !!","Warning",JOptionPane.WARNING_MESSAGE);
-                    }
                     populateTableSupply();
                     populateTableCreate();
+
                 } else {
                     JOptionPane.showMessageDialog(null, "You cannot complete it two times.","Warning",JOptionPane.WARNING_MESSAGE);
                 }

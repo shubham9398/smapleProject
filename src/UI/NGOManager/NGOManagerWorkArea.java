@@ -16,6 +16,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -86,9 +87,11 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkReq){
-               if((work.getStatus().equalsIgnoreCase("Assigned To NGO"))||(work.getStatus().equalsIgnoreCase("NGO ASSIGNED the Request"))){
+        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
+           if(work instanceof VictimWorkRequest){
+               if(work.getStatusList() != null){
+               //if((work.getStatus().equalsIgnoreCase("Assigned To Contractor"))||(work.getStatus().equalsIgnoreCase("Contractor undertook the Request")) || work.getStatusList().contains("Contractor") || !(work.getStatus().equalsIgnoreCase("Complete")) ){
+               if(work.getStatusList().contains("Contractor") && !(work.getStatus().equalsIgnoreCase("Complete")) ){
                    
                
             Object[] row = new Object[10];
@@ -101,6 +104,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
             row[6] = work.getReciever();
             
             model.addRow(row);
+           }
            }
         }
         }
@@ -149,7 +153,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Contractor Manager");
+        jLabel1.setText("Contractor Dashboard");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -543,8 +547,8 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         else {
             VictimWorkReq cswr = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
 
-            if(cswr.getStatus().equalsIgnoreCase("Assigned to NGO")){
-            cswr.setStatus("NGO Assigned the Request");
+            if(cswr.getStatusList().contains("Contractor") ){
+            cswr.setStatus("Contractor undertook the Request");
             cswr.setReciever(account);
 
             populateTableWorkQueue();
@@ -563,9 +567,14 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         } 
         else {
 
-            VictimWorkReq p = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
-            if(p.getStatus().equalsIgnoreCase("NGO Assigned the Request")){
+            VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            if(p.getStatus().equalsIgnoreCase("Contractor undertook the Request") || p.getStatusList().contains("Contractor")){
                     p.setStatus("Complete");
+                    
+                    ArrayList<String> tempList = p.getStatusList();
+                    tempList.remove("Contractor");
+                    p.setStatusList(tempList);
+                    
                     p.setReciever(account);
                     JOptionPane.showMessageDialog(null, "You have completed the request successfully");
                     populateTableWorkQueue();

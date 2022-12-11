@@ -13,7 +13,8 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.VictimWorkReq;
 import Business.WorkQueue.WorkQueue;
-import Business.WorkQueue.WorkReq;
+import Business.WorkQueue.WorkRequest;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -105,6 +106,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         btnHealth = new javax.swing.JButton();
         btnFire = new javax.swing.JButton();
         btnNGO = new javax.swing.JButton();
+        displayImage = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 204, 204));
 
@@ -239,11 +241,9 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                     .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
-                .addContainerGap())
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Relay Request To", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(153, 0, 153))); // NOI18N
@@ -354,8 +354,12 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                                 .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(258, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(125, 125, 125)
+                        .addComponent(displayImage, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,10 +374,14 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
                     .addComponent(btnAssignTo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 41, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(displayImage, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     //assign the request to me
@@ -413,6 +421,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             txtSubject.setText(p.getSubject());
             txtDesc.setText(p.getDescription());
             txtLoc.setText(p.getLocation());
+            displayImage.setIcon(p.getImageIcon());
         }
     }//GEN-LAST:event_btnViewActionPerformed
     //complete the assigned request
@@ -447,13 +456,24 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         } else {
             
 
-            VictimWorkReq cswr = (VictimWorkReq) tblEvent.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equalsIgnoreCase("Requested")){
-            cswr.setStatus("Assigned To NGO");
+            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            //if(cswr.getStatus().equalsIgnoreCase("Requested")){
+            
+            if(cswr.getStatusList().contains("Contractor")) {
+                JOptionPane.showMessageDialog(null, "Already assigned to Contractor", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            if(!cswr.getStatus().equalsIgnoreCase("Completed")){
+            cswr.setStatus("Assigned To Contractor");
+            ArrayList<String> tempList = cswr.getStatusList();
+            
+            tempList.add("Contractor");
+            cswr.setStatusList(tempList);
             populateTableWorkQueue();
             }
             else{
-                JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Already Completed", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             
         }
@@ -466,17 +486,19 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
         } else{
             
-            VictimWorkReq cswr = (VictimWorkReq) tblEvent.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equals("Assigned To Doctor")){
-                JOptionPane.showMessageDialog(null, "This request is already assigned to Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
+            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            if(cswr.getStatus().equals("Assigned To Road Safety Department") || cswr.getStatusList().contains("RoadSafety")){
+                JOptionPane.showMessageDialog(null, "This request is already assigned to Road Safety Department", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             
             else{
                 
-            if(cswr.getStatus().equalsIgnoreCase("Requested")){
-            JOptionPane.showMessageDialog(null, "Assigned to the Doctor");
-            cswr.setStatus("Assigned To Doctor");
-
+            if(!cswr.getStatus().equalsIgnoreCase("Completed")){
+            JOptionPane.showMessageDialog(null, "Assigned to Road Safety Department");
+            cswr.setStatus("Assigned To Road Safety Department");
+            ArrayList<String> tempList = cswr.getStatusList();
+            tempList.add("RoadSafety");
+            cswr.setStatusList(tempList);
             populateTableWorkQueue();
             }
             else{
@@ -492,14 +514,17 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the Police", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            VictimWorkReq cswr = (VictimWorkReq) tblEvent.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equals("Assigned to the Police")){
+            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            if(cswr.getStatus().equals("Assigned to the Police") || cswr.getStatusList().contains("Police")){
                 JOptionPane.showMessageDialog(null, "This request is already assigned to Police", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             else{
-               if(cswr.getStatus().equalsIgnoreCase("Requested")){ 
+               if(!cswr.getStatus().equalsIgnoreCase("Completed")){ 
             JOptionPane.showMessageDialog(null, "Assigned to the Police", "Warning", JOptionPane.WARNING_MESSAGE);
             cswr.setStatus("Assigned To Police");
+            ArrayList<String> tempList = cswr.getStatusList();
+            tempList.add("Police");
+            cswr.setStatusList(tempList);
             populateTableWorkQueue();
             }
                else{
@@ -516,15 +541,18 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            VictimWorkReq cswr = (VictimWorkReq) tblEvent.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equals("Assigned to the FireMan")){
-                JOptionPane.showMessageDialog(null, "This request is already assigned to FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
+            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            if(cswr.getStatus().equals("Assigned to the FireMan") || cswr.getStatusList().contains("FireMan")){
+                JOptionPane.showMessageDialog(null, "This request is already assigned to Fire Man", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             else{
-                if(cswr.getStatus().equalsIgnoreCase("Requested")){ 
+                if(!cswr.getStatus().equalsIgnoreCase("Completed")){ 
                    
                 JOptionPane.showMessageDialog(null, "Assigned to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
                 cswr.setStatus("Assigned To FireMan");
+                ArrayList<String> tempList = cswr.getStatusList();
+                tempList.add("FireMan");
+                cswr.setStatusList(tempList);
                 populateTableWorkQueue();
             }
                 else{
@@ -543,6 +571,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton btnNGO;
     private javax.swing.JButton btnPolice;
     private javax.swing.JButton btnView;
+    private javax.swing.JLabel displayImage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

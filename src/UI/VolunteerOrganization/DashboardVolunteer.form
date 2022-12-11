@@ -96,7 +96,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Volunteer Dashboard"/>
+            <Property name="text" type="java.lang.String" value="Worker Dashboard"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -115,12 +115,12 @@
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="0">
-                <Column editable="true" title="Event Name" type="java.lang.Object"/>
+                <Column editable="true" title="Title" type="java.lang.Object"/>
                 <Column editable="true" title="Description" type="java.lang.Object"/>
                 <Column editable="true" title="Location" type="java.lang.Object"/>
                 <Column editable="true" title="Date" type="java.lang.Object"/>
-                <Column editable="true" title="Volunteer Required" type="java.lang.Object"/>
-                <Column editable="true" title="Volunteer acquired" type="java.lang.Object"/>
+                <Column editable="true" title="Workers Required" type="java.lang.Object"/>
+                <Column editable="true" title="Workers acquired" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -186,7 +186,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="0" red="99" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Join Event"/>
+        <Property name="text" type="java.lang.String" value="Register"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnJoinEventActionPerformed"/>
@@ -283,7 +283,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Title"/>
+            <Property name="text" type="java.lang.String" value="Work Title"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -379,7 +379,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Volunteer Required"/>
+            <Property name="text" type="java.lang.String" value="Workers Required"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtVolunteer">

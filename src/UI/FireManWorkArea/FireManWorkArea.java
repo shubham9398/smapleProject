@@ -11,8 +11,9 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.FireManOrg;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.VictimWorkReq;
-import Business.WorkQueue.WorkReq;
+import Business.WorkQueue.VictimWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -50,9 +51,10 @@ public class FireManWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkReq){
-               if((work.getStatus().equalsIgnoreCase("Assigned To FireMan"))||(work.getStatus().equalsIgnoreCase("FireMan assigned the Request"))){
+        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
+            if(work.getStatusList() != null){
+            if(work instanceof VictimWorkRequest){
+               if((work.getStatus().equalsIgnoreCase("Assigned To FireMan"))||(work.getStatus().equalsIgnoreCase("FireMan undertook the Request")) || work.getStatusList().contains("FireMan") ){
                    
                
             Object[] row = new Object[10];
@@ -65,6 +67,7 @@ public class FireManWorkArea extends javax.swing.JPanel {
             row[6] = work.getReciever();
             
             model.addRow(row);
+           }
            }
         }
         }
@@ -198,9 +201,9 @@ public class FireManWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkReq cswr = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equalsIgnoreCase("Assigned to FireMan")){ 
-                cswr.setStatus("FireMan assigned the Request");
+            VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            if(cswr.getStatusList().contains("FireMan") ){ 
+                cswr.setStatus("FireMan undertook the Request");
                 cswr.setReciever(account);
 
                 populateFireManTable();
@@ -219,16 +222,37 @@ public class FireManWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             
-            VictimWorkReq p = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
-            if(p.getStatus().equalsIgnoreCase("FireMan assigned the Request")){ 
-            p.setStatus("Complete");
-            p.setReciever(account);
-            JOptionPane.showMessageDialog(null, "You have completed the request successfully");
-            populateFireManTable();
+            VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            if(p.getStatus().equalsIgnoreCase("Completed")){
+                p.setStatus("Completed");
+                
+                ArrayList<String> tempList = p.getStatusList();
+                tempList.remove("FireMan");
+                p.setStatusList(tempList);
+                
+                p.setReciever(account);
+                JOptionPane.showMessageDialog(null, "You have completed the request successfully");
+                populateFireManTable();
             }
             else{
-                JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+                if(p.getStatus().equalsIgnoreCase("FireMan undertook the Request")){ 
+                    p.setStatus("Concluded by FireMan Department");
+                    
+                    ArrayList<String> tempList = p.getStatusList();
+                    tempList.remove("FireMan");
+                    p.setStatusList(tempList);
+                    
+                    p.setReciever(account);
+                    JOptionPane.showMessageDialog(null, "You have completed the request successfully");
+                    populateFireManTable();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
             }
+            
+            
+
 
         }  
     }//GEN-LAST:event_btnCompleteActionPerformed

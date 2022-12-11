@@ -123,7 +123,7 @@ public class DashboardVolunteer extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Volunteer Dashboard");
+        jLabel1.setText("Worker Dashboard");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,7 +144,7 @@ public class DashboardVolunteer extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Event Name", "Description", "Location", "Date", "Volunteer Required", "Volunteer acquired"
+                "Title", "Description", "Location", "Date", "Workers Required", "Workers acquired"
             }
         ));
         jScrollPane1.setViewportView(tblEventNGO);
@@ -160,7 +160,7 @@ public class DashboardVolunteer extends javax.swing.JPanel {
 
         btnJoinEvent.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         btnJoinEvent.setForeground(new java.awt.Color(153, 0, 153));
-        btnJoinEvent.setText("Join Event");
+        btnJoinEvent.setText("Register");
         btnJoinEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJoinEventActionPerformed(evt);
@@ -173,7 +173,7 @@ public class DashboardVolunteer extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 0, 153));
-        jLabel4.setText("Title");
+        jLabel4.setText("Work Title");
 
         txtDesc.setColumns(20);
         txtDesc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -207,7 +207,7 @@ public class DashboardVolunteer extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 0, 153));
-        jLabel6.setText("Volunteer Required");
+        jLabel6.setText("Workers Required");
 
         txtVolunteer.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtVolunteer.setForeground(new java.awt.Color(153, 0, 153));

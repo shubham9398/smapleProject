@@ -9,8 +9,9 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrg;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.VictimWorkReq;
-import Business.WorkQueue.WorkReq;
+import Business.WorkQueue.VictimWorkRequest;
+import Business.WorkQueue.WorkRequest;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -49,9 +50,10 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkReq){
-               if((work.getStatus().equalsIgnoreCase("Assigned To Doctor"))||(work.getStatus().equalsIgnoreCase("Doctor assigned the Request"))){
+        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
+           if(work instanceof VictimWorkRequest){
+               if(work.getStatusList() != null){
+               if((work.getStatus().equalsIgnoreCase("Assigned To Road Safety Department"))||(work.getStatus().equalsIgnoreCase("Road Safety Department undertook Request")) || work.getStatusList().contains("RoadSafety") ){
                    
                
             Object[] row = new Object[10];
@@ -64,6 +66,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
             row[6] = work.getReciever();
             
             model.addRow(row);
+           }
            }
         }
         }
@@ -95,7 +98,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Doctor Work Area");
+        jLabel1.setText("Road Safety Officer Dashboard");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -113,7 +116,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
 
         btnAssign.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         btnAssign.setForeground(new java.awt.Color(255, 0, 0));
-        btnAssign.setText("Acknowledge");
+        btnAssign.setText("Undertake");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
@@ -122,7 +125,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
 
         btnComplete.setFont(new java.awt.Font("Tamil MN", 0, 18)); // NOI18N
         btnComplete.setForeground(new java.awt.Color(255, 0, 0));
-        btnComplete.setText("Responded");
+        btnComplete.setText("Submit");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCompleteActionPerformed(evt);
@@ -148,9 +151,9 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblRequests);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Hi..,Logged in as Doctor.");
+        jLabel2.setText("Logged in as Road Safety Officer");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -160,16 +163,15 @@ public class DoctorWorkArea extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(572, 572, 572)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(431, 431, 431)
+                        .addGap(777, 777, 777)
                         .addComponent(btnAssign)
-                        .addGap(171, 171, 171)
+                        .addGap(89, 89, 89)
                         .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1802, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1802, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -180,7 +182,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel2)
                 .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,9 +213,9 @@ public class DoctorWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkReq cswr = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equalsIgnoreCase("Assigned To Doctor")){
-            cswr.setStatus("Doctor assigned the Request");
+            VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            if(cswr.getStatusList().contains("RoadSafety") ){
+            cswr.setStatus("Road Safety Department undertook Request");
             cswr.setReciever(account);
 
             populateDoctorTable();
@@ -232,16 +234,37 @@ public class DoctorWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkReq p = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
-            if(p.getStatus().equalsIgnoreCase("Doctor assigned the Request")){
-            p.setStatus("Complete");
-            p.setReciever(account);
-            JOptionPane.showMessageDialog(null, "You have completed the request successfully");
-            populateDoctorTable();
+            VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            
+            if(p.getStatus().equalsIgnoreCase("Completed")){
+                p.setStatus("Completed");
+                
+                ArrayList<String> tempList = p.getStatusList();
+                tempList.remove("RoadSafety");
+                p.setStatusList(tempList);
+                
+                p.setReciever(account);
+                JOptionPane.showMessageDialog(null, "You have completed the request successfully");
+                populateDoctorTable();
+            }            
+            else{
+            if(p.getStatus().equalsIgnoreCase("Road Safety Department undertook Request")){
+                p.setStatus("Concluded by Road Safety Department");
+                
+                ArrayList<String> tempList = p.getStatusList();
+                tempList.remove("RoadSafety");
+                p.setStatusList(tempList);
+                
+                p.setReciever(account);
+                JOptionPane.showMessageDialog(null, "You have completed the request successfully");
+                populateDoctorTable();
              }
              else{
                   JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
              }
+            }
+            
+
 
         }  
     }//GEN-LAST:event_btnCompleteActionPerformed

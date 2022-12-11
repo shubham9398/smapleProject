@@ -87,8 +87,8 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkRequest){
+        for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
+           if(work instanceof VictimWorkReq){
                if(work.getStatusList() != null){
                //if((work.getStatus().equalsIgnoreCase("Assigned To Contractor"))||(work.getStatus().equalsIgnoreCase("Contractor undertook the Request")) || work.getStatusList().contains("Contractor") || !(work.getStatus().equalsIgnoreCase("Complete")) ){
                if(work.getStatusList().contains("Contractor") && !(work.getStatus().equalsIgnoreCase("Complete")) ){
@@ -567,7 +567,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         } 
         else {
 
-            VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            VictimWorkReq p = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
             if(p.getStatus().equalsIgnoreCase("Contractor undertook the Request") || p.getStatusList().contains("Contractor")){
                     p.setStatus("Complete");
                     

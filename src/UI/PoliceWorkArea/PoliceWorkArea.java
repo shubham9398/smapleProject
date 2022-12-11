@@ -10,8 +10,8 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.PoliceOrg;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.VictimWorkRequest;
-import Business.WorkQueue.WorkRequest;
+import Business.WorkQueue.VictimWorkReq;
+import Business.WorkQueue.WorkReq;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -50,8 +50,8 @@ public class PoliceWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkRequest){
+        for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
+           if(work instanceof VictimWorkReq){
                if(work.getStatusList() != null){
                if((work.getStatus().equalsIgnoreCase("Assigned To Police"))||(work.getStatus().equalsIgnoreCase("Police undertook the Request")) || work.getStatusList().contains("Police") ){
                    
@@ -212,7 +212,7 @@ public class PoliceWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            VictimWorkReq cswr = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
             //if(cswr.getStatus().equalsIgnoreCase("Assigned To Police")){ 
             if(cswr.getStatusList().contains("Police") ){ 
             cswr.setStatus("Police undertook the Request");
@@ -233,7 +233,7 @@ public class PoliceWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            VictimWorkReq p = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
             
             if(p.getStatus().equalsIgnoreCase("Completed")){ 
                 p.setStatus("Completed");

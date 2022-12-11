@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  *
  * @author vidhi
  */
-public class VictimWorkRequest extends WorkRequest{
+public class VictimWorkReq extends WorkReq{
     private String Description;
     private String Location;
     private boolean add;

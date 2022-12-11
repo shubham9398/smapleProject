@@ -9,8 +9,8 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrg;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.VictimWorkRequest;
-import Business.WorkQueue.WorkRequest;
+import Business.WorkQueue.VictimWorkReq;
+import Business.WorkQueue.WorkReq;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -50,8 +50,8 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkRequest){
+        for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
+           if(work instanceof VictimWorkReq){
                if(work.getStatusList() != null){
                if((work.getStatus().equalsIgnoreCase("Assigned To Road Safety Department"))||(work.getStatus().equalsIgnoreCase("Road Safety Department undertook Request")) || work.getStatusList().contains("RoadSafety") ){
                    
@@ -184,7 +184,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
                 .addGap(56, 56, 56)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(190, 190, 190))
@@ -213,7 +213,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            VictimWorkReq cswr = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
             if(cswr.getStatusList().contains("RoadSafety") ){
             cswr.setStatus("Road Safety Department undertook Request");
             cswr.setReciever(account);
@@ -234,7 +234,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row.", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            VictimWorkReq p = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
             
             if(p.getStatus().equalsIgnoreCase("Completed")){
                 p.setStatus("Completed");

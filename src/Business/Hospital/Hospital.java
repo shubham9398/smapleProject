@@ -5,53 +5,59 @@
  */
 package Business.Hospital;
 
-/**
- *
- * @author vidhi
- */
+
 public class Hospital {
-    private String Dname;
-    private String Did;
+    private String doctorName;
+    private String doctorId;
     private static int count=1;
     
     //Hospital constructor to generate id automatically
     public Hospital() {
         
         
-        Did="ORG"+(++count);
+        doctorId="ORG"+(++count);
     }
 
+    
+    
+    
+     
+   
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+    
     public static int getCount() {
         return count;
     }
-
+//set hopital count
     public static void setCount(int count) {
         Hospital.count = count;
     }
     
+    //get doctor ID
+
+    public String getDoctorId() {
+        return doctorId;
+    }
     
-     
-    public String getDname() {
-        return Dname;
+     public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setDname(String Dname) {
-        this.Dname = Dname;
-    }
 
-    public String getDid() {
-        return Did;
-    }
-
-    public void setDid(String Did) {
-        this.Did = Did;
-    }
+   
 
    
 
     @Override
     public String toString(){
-    return Dname;
+    return doctorName;
     
+    }
+    
+    
+     public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
     }
 }

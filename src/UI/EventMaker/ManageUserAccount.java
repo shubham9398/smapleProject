@@ -9,7 +9,7 @@ import Business.Ecosystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.EventMaker.EventMaker;
-import Business.Organization.EventMakerOrganization;
+import Business.Organization.EventMakerOrg;
 import Business.Organization.Organization;
 import Business.Role.EventMakerRole;
 import Business.Role.Role;
@@ -42,8 +42,8 @@ public class ManageUserAccount extends javax.swing.JPanel {
     public void populateComboOrganization() {
         comboOrg.removeAllItems();
 
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            if(organization instanceof EventMakerOrganization)
+        for (Organization organization : enterprise.getOrganizationDir().getOrganizationList()) {
+            if(organization instanceof EventMakerOrg)
             comboOrg.addItem(organization);
             
         }
@@ -52,7 +52,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
     public void populateComboEmployee(Organization organization){
         comboEmp.removeAllItems();
         
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
+        for (Employee employee : organization.getEmployeeDir().getEmpList()){
             comboEmp.addItem(employee);
         }
     }
@@ -60,7 +60,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof EventMakerOrganization){
+        if(organization instanceof EventMakerOrg){
             comboRole.addItem(new EventMakerRole());
         
         }
@@ -73,8 +73,8 @@ public class ManageUserAccount extends javax.swing.JPanel {
 
         model.setRowCount(0);
 
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+        for (Organization organization : enterprise.getOrganizationDir().getOrganizationList()) {
+            for (UserAccount ua : organization.getUserAccountDir().getUserAccountList()) {
                 Object row[] = new Object[2];
                 row[0] = ua;
                 row[1] = ua.getRole();
@@ -330,15 +330,15 @@ public class ManageUserAccount extends javax.swing.JPanel {
         Role role = (Role) comboRole.getSelectedItem();
         
         
-        if (organization instanceof EventMakerOrganization){
+        if (organization instanceof EventMakerOrg){
            EventMaker cm= new EventMaker();
             
-           cm.setName(employee.getName());
+           cm.setName(employee.getEmployeeName());
            
-           ((EventMakerOrganization) organization).getChangemakerlist().getChangeMakerDirectory().add(cm);
+           ((EventMakerOrg) organization).getChangemakerlist().getChangeMakerDirectory().add(cm);
           
         }
-        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+        organization.getUserAccountDir().createUserAccount(userName, password, employee, role);
         populateData();
         txtName.setText("");
         txtPassword.setText("");

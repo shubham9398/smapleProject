@@ -5,37 +5,38 @@
  */
 package Business.Network;
 
-import Business.Enterprise.EnterpriseDirectory;
+import Business.Enterprise.EnterpriseDir;
 
-/**
- *
- * @author ymayank97
- */
+//network
 public class Network {
-    private String name;
-    private EnterpriseDirectory enterpriseDirectory;
+    private String networkName;
+    private EnterpriseDir enterpriseDir;
     
     public Network()
     {
-     enterpriseDirectory = new EnterpriseDirectory();
+     enterpriseDir = new EnterpriseDir();
+    }
+    
+    //enterprise directory
+
+    public EnterpriseDir getEnterpriseDir() {
+        return enterpriseDir;
     }
 
-    public EnterpriseDirectory getEnterpriseDirectory() {
-        return enterpriseDirectory;
+    public String getNetworkName() {
+        return networkName;
     }
+    
+    //SetNEtwork NAme
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setNetworkName(String networkName) {
+        this.networkName = networkName;
     }
     
     @Override
     public String toString()
     {
-        return name;
+        return networkName;
     }
 }
 

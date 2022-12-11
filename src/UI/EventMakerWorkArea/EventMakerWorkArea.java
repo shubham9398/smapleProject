@@ -8,12 +8,12 @@ package UI.EventMakerWorkArea;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.EventMaker.EventMaker;
-import Business.Organization.EventMakerOrganization;
+import Business.Organization.EventMakerOrg;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.VictimWorkRequest;
+import Business.WorkQueue.VictimWorkReq;
 import Business.WorkQueue.WorkQueue;
-import Business.WorkQueue.WorkRequest;
+import Business.WorkQueue.WorkReq;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -42,8 +42,8 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.system=system;
         
-        for (EventMaker eventmaker : ((EventMakerOrganization)organization).getChangemakerlist().getChangeMakerDirectory()) {
-            if (account.getEmployee().getName().equals(eventmaker.getName())) {
+        for (EventMaker eventmaker : ((EventMakerOrg)organization).getChangemakerlist().getChangeMakerDirectory()) {
+            if (account.getEmployee().getEmployeeName().equals(eventmaker.getName())) {
                  em=eventmaker;
             }
         }
@@ -60,13 +60,13 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkRequest){ 
+        for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
+           if(work instanceof VictimWorkReq){ 
             Object[] row = new Object[10];
-            row[0] = work.getSender().getEmployee().getName();
+            row[0] = work.getSender().getEmployee().getEmployeeName();
             row[1] = work.getSubject();
-            row[2] = ((VictimWorkRequest) work).getDescription();
-            row[3] = ((VictimWorkRequest) work).getLocation();
+            row[2] = ((VictimWorkReq) work).getDescription();
+            row[3] = ((VictimWorkReq) work).getLocation();
             row[4] = work.getRequestDate();
             row[5] = work;
             row[6] = work.getReciever();
@@ -384,7 +384,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            VictimWorkReq cswr = (VictimWorkReq) tblEvent.getValueAt(selectedRow, 5);
             
             if(cswr.getStatus().equalsIgnoreCase("Requested")){
 
@@ -408,7 +408,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         } else {
             
             
-            VictimWorkRequest p = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            VictimWorkReq p = (VictimWorkReq) tblEvent.getValueAt(selectedRow, 5);
             
             txtSubject.setText(p.getSubject());
             txtDesc.setText(p.getDescription());
@@ -423,7 +423,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkRequest p = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            VictimWorkReq p = (VictimWorkReq) tblEvent.getValueAt(selectedRow, 5);
            
             if(p.getStatus().equalsIgnoreCase("Pending")){
 
@@ -447,7 +447,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         } else {
             
 
-            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            VictimWorkReq cswr = (VictimWorkReq) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equalsIgnoreCase("Requested")){
             cswr.setStatus("Assigned To NGO");
             populateTableWorkQueue();
@@ -466,7 +466,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
         } else{
             
-            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            VictimWorkReq cswr = (VictimWorkReq) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equals("Assigned To Doctor")){
                 JOptionPane.showMessageDialog(null, "This request is already assigned to Doctor", "Warning", JOptionPane.WARNING_MESSAGE);
             }
@@ -492,7 +492,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the Police", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            VictimWorkReq cswr = (VictimWorkReq) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equals("Assigned to the Police")){
                 JOptionPane.showMessageDialog(null, "This request is already assigned to Police", "Warning", JOptionPane.WARNING_MESSAGE);
             }
@@ -516,7 +516,7 @@ public class EventMakerWorkArea extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please choose the row to forward request to the FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            VictimWorkRequest cswr = (VictimWorkRequest) tblEvent.getValueAt(selectedRow, 5);
+            VictimWorkReq cswr = (VictimWorkReq) tblEvent.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equals("Assigned to the FireMan")){
                 JOptionPane.showMessageDialog(null, "This request is already assigned to FireMan", "Warning", JOptionPane.WARNING_MESSAGE);
             }

@@ -9,7 +9,7 @@ package UI.HospitalEnterprise;
 import Business.Ecosystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
-import Business.Organization.DoctorOrganization;
+import Business.Organization.DoctorOrg;
 import Business.Organization.Organization;
 import Business.Role.DoctorRole;
 import Business.Role.Role;
@@ -42,7 +42,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
     public void populateComboOrganization() {
         comboOrg.removeAllItems();
 
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+        for (Organization organization : enterprise.getOrganizationDir().getOrganizationList()) {
             comboOrg.addItem(organization);
         }
     }
@@ -50,7 +50,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
     public void populateComboEmployee(Organization organization){
         comboEmp.removeAllItems();
         
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
+        for (Employee employee : organization.getEmployeeDir().getEmpList()){
             comboEmp.addItem(employee);
         }
     }
@@ -58,7 +58,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof DoctorOrganization){
+        if(organization instanceof DoctorOrg){
             comboRole.addItem(new DoctorRole());
         }
         
@@ -71,8 +71,8 @@ public class ManageUserAccount extends javax.swing.JPanel {
 
         model.setRowCount(0);
 
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+        for (Organization organization : enterprise.getOrganizationDir().getOrganizationList()) {
+            for (UserAccount ua : organization.getUserAccountDir().getUserAccountList()) {
                 Object row[] = new Object[2];
                 row[0] = ua;
                 row[1] = ua.getRole();
@@ -328,7 +328,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
         Employee employee = (Employee) comboEmp.getSelectedItem();
         Role role = (Role) comboRole.getSelectedItem();
 
-        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+        organization.getUserAccountDir().createUserAccount(userName, password, employee, role);
         populateData();
         txtName.setText("");
         txtPassword.setText("");

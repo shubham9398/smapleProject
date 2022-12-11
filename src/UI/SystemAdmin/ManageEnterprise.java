@@ -54,10 +54,10 @@ public class ManageEnterprise extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (Network network : system.getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            for (Enterprise enterprise : network.getEnterpriseDir().getEnterpriseList()) {
                 Object[] row = new Object[3];
                 row[0] = enterprise;
-                row[1] = network.getName();
+                row[1] = network.getNetworkName();
                 row[2] = enterprise.getEnterpriseType().getValue();
                 model.addRow(row);
             }
@@ -285,7 +285,7 @@ public class ManageEnterprise extends javax.swing.JPanel {
 
         String name = txtName.getText();
 
-        Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
+        Enterprise enterprise = network.getEnterpriseDir().createAndAddEnterprise(name, type);
 
         populateTableEnterprise();
         txtName.setText("");
@@ -302,10 +302,10 @@ public class ManageEnterprise extends javax.swing.JPanel {
             Enterprise p=(Enterprise) tblEnterprise.getValueAt(selectedRow, 0);
 
             for (Network network : system.getNetworkList()) {
-                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Enterprise enterprise : network.getEnterpriseDir().getEnterpriseList()) {
                    
                         if(p==enterprise){
-                           network.getEnterpriseDirectory().getEnterpriseList().remove(p);
+                           network.getEnterpriseDir().getEnterpriseList().remove(p);
                             break;
                         }
 

@@ -12,10 +12,7 @@ import Business.UserAccount.UserAccount;
 import UI.VolunteerOrganization.VolunteerAdminWorkArea;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class VolunteerAdminRole extends Role{
     //overriding main panel with volunteer admin work area whenever volunteer admin role is called
     @Override

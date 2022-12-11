@@ -12,10 +12,7 @@ import Business.UserAccount.UserAccount;
 import UI.ProviderManager.ProviderManagerWorkArea;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class ProviderManagerRole extends Role{
     //overriding main panel with provider manager work area whenever provider manager role is called
     @Override

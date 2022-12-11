@@ -7,10 +7,7 @@ package Business.FireMan;
 
 import Business.WorkQueue.WorkQueue;
 
-/**
- *
- * @author vidhi
- */
+//fireMAn role 
 public class FireMan {
     private String Name;
     private static int Count=1;
@@ -23,10 +20,20 @@ public class FireMan {
         workQueue= new WorkQueue();
     }
     
+    //get Count of FIreman
+    
     public static int getCount() {
         return Count;
     }
 
+    
+
+   
+
+    public void setFireManId(String FireManId) {
+        this.FireManId = FireManId;
+    }
+    
     public static void setCount(int Count) {
         FireMan.Count = Count;
     }
@@ -35,24 +42,22 @@ public class FireMan {
         return Name;
     }
 
-    public void setName(String Name) {
+    public WorkQueue getWorkQueue() {
+        return workQueue;
+    }
+    
+    //set workQueue
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
+    }
+    
+     public void setName(String Name) {
         this.Name = Name;
     }
 
     public String getFireManId() {
         return FireManId;
-    }
-
-    public void setFireManId(String FireManId) {
-        this.FireManId = FireManId;
-    }
-
-    public WorkQueue getWorkQueue() {
-        return workQueue;
-    }
-
-    public void setWorkQueue(WorkQueue workQueue) {
-        this.workQueue = workQueue;
     }
        
     

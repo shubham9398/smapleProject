@@ -5,16 +5,13 @@
  */
 package Business.Organization;
 
-import Business.Employee.EmployeeDirectory;
+import Business.Employee.EmployeeDir;
 import Business.Role.Role;
-import Business.UserAccount.UserAccountDirectory;
+import Business.UserAccount.UserAccountDir;
 import Business.WorkQueue.WorkQueue;
 import java.util.HashSet;
 
-/**
- *
- * @author ymayank97
- */
+
 
 
 public abstract class Organization {
@@ -22,8 +19,8 @@ public abstract class Organization {
     private String name;
     private String orgName;
     private WorkQueue workQueue;
-    private EmployeeDirectory employeeDirectory;
-    private UserAccountDirectory userAccountDirectory;
+    private EmployeeDir employeeDir;
+    private UserAccountDir userAccountDir;
     private int organizationCode;
     private static int count=1;
     public HashSet<Role> role;
@@ -51,40 +48,45 @@ public abstract class Organization {
     {
       this.name = name;
       workQueue = new WorkQueue();
-      employeeDirectory = new EmployeeDirectory();
-      userAccountDirectory = new UserAccountDirectory();
+      employeeDir = new EmployeeDir();
+      userAccountDir = new UserAccountDir();
      
       organizationCode = count;
       role = new HashSet<>();
       ++count;        
     }
 
-    public String getOrgName() {
-        return orgName;
-    }
-
-    public void setOrgName(String orgName) {
-        this.orgName = orgName;
-    }
     
+    //getSupported role
     public abstract HashSet<Role> getSupportedRole();
 
 
-    public void setUserAccountDirectory(UserAccountDirectory userAccountDirectory) {
-        this.userAccountDirectory = userAccountDirectory;
-    }
-
-    
-    public UserAccountDirectory getUserAccountDirectory() {
-        return userAccountDirectory;
+    public void setUserAccountDir(UserAccountDir userAccountDir) {
+        this.userAccountDir = userAccountDir;
     }
     
-     public EmployeeDirectory getEmployeeDirectory() {
-        return employeeDirectory;
+    
+
+    //get USeraccount directory
+    public UserAccountDir getUserAccountDir() {
+        return userAccountDir;
+    }
+    
+    //get Employeee Directory
+     public EmployeeDir getEmployeeDir() {
+        return employeeDir;
     }
 
-    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
-        this.employeeDirectory = employeeDirectory;
+    public void setEmployeeDir(EmployeeDir employeeDir) {
+        this.employeeDir = employeeDir;
+    }
+    
+     public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
+    }
+    
+    public String getName() {
+        return name;
     }
     
     public int getOrganizationCode() {
@@ -95,16 +97,18 @@ public abstract class Organization {
         return workQueue;
     }
 
-    public void setWorkQueue(WorkQueue workQueue) {
-        this.workQueue = workQueue;
-    }
-    
-    public String getName() {
-        return name;
-    }
-
+   
+    //setName
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String getOrgName() {
+        return orgName;
+    }
+    //setOrgaNAme
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
     }
     
     @Override

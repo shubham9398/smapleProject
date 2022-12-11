@@ -9,17 +9,16 @@ import Business.Employee.Employee;
 import Business.Role.SystemAdminRole;
 import Business.UserAccount.UserAccount;
 
-/**
- *
- * @author vidhi
- */
+//configure a system using Ecosystem 
 public class ConfigureASystem {
     public static Ecosystem configure(){
+        
+        //create an instance of Ecosystem 
     Ecosystem system= Ecosystem.getInstance();
    
-     Employee employee= system.getEmployeeDirectory().createEmployee("SYSTEM ADMIN");
-     //making defualt username, password for application admin role
-     UserAccount ua= system.getUserAccountDirectory().createUserAccount("admin","admin", employee, new SystemAdminRole());
+     Employee employee= system.getEmployeeDir().createEmployee("SYSTEM ADMIN");
+     //added userAccounts
+     UserAccount ua= system.getUserAccountDir().createUserAccount("admin","admin", employee, new SystemAdminRole());
     
     return system;
     }

@@ -9,10 +9,7 @@ import Business.Employee.Employee;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
 
-/**
- *
- * @author ymayank97
- */
+
 public class UserAccount {
     private String username;
     private String password;
@@ -24,17 +21,25 @@ public class UserAccount {
         workQueue = new WorkQueue();
     }
     
+    //het password
+    
     public String getPassword() {
         return password;
     }
+    
+    //set password
 
     public void setPassword(String password) {
         this.password = password;
     }
     
+    //get username
+    
     public String getUsername() {
         return username;
     }
+    
+    //set username
 
     public void setUsername(String username) {
         this.username = username;
@@ -51,14 +56,19 @@ public class UserAccount {
     public Role getRole() {
         return role;
     }
+    //set role
 
     public void setRole(Role role) {
         this.role = role;
     }
+    
+    //getWOrkQueueu
 
     public WorkQueue getWorkQueue() {
         return workQueue;
     }
+    
+    //set work Queueu
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;

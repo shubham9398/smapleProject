@@ -12,10 +12,7 @@ import Business.UserAccount.UserAccount;
 import UI.CommunityEnterprise.CommunityAdminWorkArea;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class CommunityAdminRole extends Role{
     //overriding main panel with community admin work area whenever community admin role is called
     @Override

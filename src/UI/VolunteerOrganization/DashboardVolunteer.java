@@ -9,15 +9,15 @@ import UI.EventMakerWorkArea.*;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.EventMaker.EventMaker;
-import Business.Organization.EventMakerOrganization;
+import Business.Organization.EventMakerOrg;
 import Business.Organization.Organization;
-import Business.Organization.VolunteerOrganization;
+import Business.Organization.VolunteerOrg;
 import Business.UserAccount.UserAccount;
 import Business.Volunteer.Volunteer;
-import Business.WorkQueue.NGOWorkRequest;
-import Business.WorkQueue.VictimWorkRequest;
+import Business.WorkQueue.NGOWorkReq;
+import Business.WorkQueue.VictimWorkReq;
 import Business.WorkQueue.WorkQueue;
-import Business.WorkQueue.WorkRequest;
+import Business.WorkQueue.WorkReq;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -47,9 +47,9 @@ public class DashboardVolunteer extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.system=system;
        
-        for (Volunteer volunteer:((VolunteerOrganization)organization).getVolunteerList().getVolunteerList())
+        for (Volunteer volunteer:((VolunteerOrg)organization).getVolunteerList().getVolunteerList())
         {
-            if (account.getEmployee().getName().equals(volunteer.getVolunteerName())) {
+            if (account.getEmployee().getEmployeeName().equals(volunteer.getVolunteerName())) {
                  vm=volunteer;
                  
                 System.out.println("Volunteer Name" + vm.getVolunteerName());
@@ -73,15 +73,15 @@ public class DashboardVolunteer extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof NGOWorkRequest){ 
+        for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
+           if(work instanceof NGOWorkReq){ 
             Object[] row = new Object[10];
             row[0] = work;
-            row[1] = ((NGOWorkRequest) work).getDescription();
+            row[1] = ((NGOWorkReq) work).getDescription();
             row[2] =  work.getRequestDate();
-            row[3] = ((NGOWorkRequest) work).getLocation();
-            row[4] = ((NGOWorkRequest) work).getvRequired();
-            row[5] =  ((NGOWorkRequest) work).getvAcquired();
+            row[3] = ((NGOWorkReq) work).getLocation();
+            row[4] = ((NGOWorkReq) work).getvRequired();
+            row[5] =  ((NGOWorkReq) work).getvAcquired();
             
             model.addRow(row);
            }
@@ -306,7 +306,7 @@ public class DashboardVolunteer extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-        NGOWorkRequest p = (NGOWorkRequest) tblEventNGO.getValueAt(selectedRow, 0);
+        NGOWorkReq p = (NGOWorkReq) tblEventNGO.getValueAt(selectedRow, 0);
       
         p.setvRequired(p.getvRequired()-1);
         p.setvAcquired(p.getvAcquired()+1);
@@ -327,7 +327,7 @@ public class DashboardVolunteer extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            NGOWorkRequest p = (NGOWorkRequest) tblEventNGO.getValueAt(selectedRow, 0);
+            NGOWorkReq p = (NGOWorkReq) tblEventNGO.getValueAt(selectedRow, 0);
             txtTitle.setText(p.getTitle());
             txtDesc.setText(p.getDescription());
             txtLoc.setText(p.getLocation());

@@ -234,7 +234,7 @@ public class ManageNetwork extends javax.swing.JPanel {
         String name = txtName.getText();
 
         Network network = system.addNetwork();
-        network.setName(name);
+        network.setNetworkName(name);
 
         populateTableNetwork();
         txtName.setText("");

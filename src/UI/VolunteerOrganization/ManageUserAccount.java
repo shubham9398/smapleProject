@@ -10,7 +10,7 @@ import Business.Ecosystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.Organization.VolunteerOrganization;
+import Business.Organization.VolunteerOrg;
 import Business.Role.Role;
 import Business.Role.VolunteerRole;
 import Business.UserAccount.UserAccount;
@@ -43,8 +43,8 @@ public class ManageUserAccount extends javax.swing.JPanel {
     public void populateComboOrganization() {
         comboOrg.removeAllItems();
 
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            if(organization instanceof VolunteerOrganization)
+        for (Organization organization : enterprise.getOrganizationDir().getOrganizationList()) {
+            if(organization instanceof VolunteerOrg)
             comboOrg.addItem(organization);
             
         }
@@ -53,7 +53,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
     public void populateComboEmployee(Organization organization){
         comboEmp.removeAllItems();
         
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
+        for (Employee employee : organization.getEmployeeDir().getEmpList()){
             comboEmp.addItem(employee);
         }
     }
@@ -61,7 +61,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void populateComboRole(Enterprise e){
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof VolunteerOrganization){
+        if(organization instanceof VolunteerOrg){
             comboRole.addItem(new VolunteerRole());
         
         }
@@ -74,8 +74,8 @@ public class ManageUserAccount extends javax.swing.JPanel {
 
         model.setRowCount(0);
 
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+        for (Organization organization : enterprise.getOrganizationDir().getOrganizationList()) {
+            for (UserAccount ua : organization.getUserAccountDir().getUserAccountList()) {
                 Object row[] = new Object[2];
                 row[0] = ua;
                 row[1] = ua.getRole();
@@ -341,15 +341,15 @@ public class ManageUserAccount extends javax.swing.JPanel {
         Role role = (Role) comboRole.getSelectedItem();
         
         
-        if (organization instanceof VolunteerOrganization){
+        if (organization instanceof VolunteerOrg){
            Volunteer vt = new Volunteer();
             
-           vt.setVolunteerName(employee.getName());
+           vt.setVolunteerName(employee.getEmployeeName());
            
-           ((VolunteerOrganization) organization).getVolunteerList().getVolunteerList().add(vt);
+           ((VolunteerOrg) organization).getVolunteerList().getVolunteerList().add(vt);
           
         }
-        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+        organization.getUserAccountDir().createUserAccount(userName, password, employee, role);
         populateData();
         txtName.setText("");
         txtPassword.setText("");

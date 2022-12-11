@@ -7,21 +7,18 @@ package Business.Role;
 
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.NGOOrganization;
+import Business.Organization.NGOOrg;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import UI.NGOManager.NGOManagerWorkArea;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class NGOManagerRole extends Role{
     //overriding main panel with NGO Manager work area whenever NGO Manager role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
-        return new NGOManagerWorkArea(userProcessContainer,account,(NGOOrganization)organization,enterprise,system);
+        return new NGOManagerWorkArea(userProcessContainer,account,(NGOOrg)organization,enterprise,system);
     }
         @Override
         public String toString()

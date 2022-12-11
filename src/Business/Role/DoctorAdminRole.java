@@ -12,10 +12,7 @@ import Business.UserAccount.UserAccount;
 import UI.HospitalEnterprise.HospitalAdminWorkArea;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class DoctorAdminRole extends Role{
     //overriding main panel with doctor admin work area whenever doctor admin role is called
     @Override

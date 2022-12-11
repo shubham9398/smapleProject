@@ -7,7 +7,7 @@ package UI.HospitalEnterprise;
 
 
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
+import Business.Organization.OrganizationDir;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,10 +22,10 @@ public class ManageOrganization extends javax.swing.JPanel {
     /**
      * Creates new form ManageEnterprise
      */
-    private OrganizationDirectory orgdirectory;
+    private OrganizationDir orgdirectory;
     private JPanel userProcessContainer;
     
-    public ManageOrganization(JPanel userProcessContainer,OrganizationDirectory orgdirectory) {
+    public ManageOrganization(JPanel userProcessContainer,OrganizationDir orgdirectory) {
         initComponents();   
         this.userProcessContainer=userProcessContainer;
         this.orgdirectory=orgdirectory;

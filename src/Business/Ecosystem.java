@@ -15,24 +15,19 @@ import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-/**
- *
- * @author vidhi
- */
+
 public class Ecosystem extends Organization {
     
     private static Ecosystem business;
     private ArrayList<Network> networkList;
     
     
-    public static Ecosystem getInstance()
-    {
-     if(business == null)
-     {
-         business = new Ecosystem();
-     }
-     return business;
+    //declare arryalist
+    
+     public ArrayList<Network> getNetworkList() {
+        return networkList;
     }
+
     //constructor for Ecosystem class
     private Ecosystem()
     {
@@ -41,14 +36,20 @@ public class Ecosystem extends Organization {
         
     }
 
-    public ArrayList<Network> getNetworkList() {
-        return networkList;
-    }
-
+   
     public static void setInstance(Ecosystem system)
     {
         business = system;
     }
+    
+    
+     @Override
+    public HashSet<Role> getSupportedRole(){
+        role.add(new SystemAdminRole());
+        
+        return role;
+    }
+    
     //add a network
     public Network addNetwork()
     {
@@ -57,27 +58,31 @@ public class Ecosystem extends Organization {
       return network;
     }
     
-    @Override
-    public HashSet<Role> getSupportedRole(){
-        role.add(new SystemAdminRole());
-        
-        return role;
+    //get ecosystem instance
+    public static Ecosystem getInstance()
+    {
+     if(business == null)
+     {
+         business = new Ecosystem();
+     }
+     return business;
     }
     
+   
     
     
     
     
     
     
-    
+   //check usernameidUnique 
     public static boolean checkIfUsernameIsUnique(String username)
     {
         for(Network n : business.getNetworkList())
         {
-            for(Enterprise e : n.getEnterpriseDirectory().getEnterpriseList())
+            for(Enterprise e : n.getEnterpriseDir().getEnterpriseList())
             {
-                for(UserAccount ua : e.getUserAccountDirectory().getUserAccountList())
+                for(UserAccount ua : e.getUserAccountDir().getUserAccountList())
                 {
                     if(ua.getUsername().equals(username))
                     {
@@ -85,9 +90,9 @@ public class Ecosystem extends Organization {
                     }
                 }
                 
-                for(Organization o : e.getOrganizationDirectory().getOrganizationList())
+                for(Organization o : e.getOrganizationDir().getOrganizationList())
                 {
-                    for(UserAccount ua : o.getUserAccountDirectory().getUserAccountList())
+                    for(UserAccount ua : o.getUserAccountDir().getUserAccountList())
                     {
                         if(ua.getUsername().equals(username))
                         {

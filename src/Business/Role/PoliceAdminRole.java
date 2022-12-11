@@ -12,10 +12,7 @@ import Business.UserAccount.UserAccount;
 import UI.PoliceEnterprise.PoliceAdminWorkArea;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class PoliceAdminRole extends Role{
     //overriding main panel with police admin work area whenever police admin role is called
     @Override

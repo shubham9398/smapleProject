@@ -5,10 +5,7 @@
  */
 package Business.Provider;
 
-/**
- *
- * @author vidhi
- */
+
 public class Item {
     private String itemId;
     private static int sCount=1;
@@ -19,7 +16,7 @@ public class Item {
     public Item(){
         itemId="Item"+(+sCount);        
     }
-
+//get item quantity
     public int getQuantity() {
         return quantity;
     }
@@ -31,17 +28,13 @@ public class Item {
         return itemId;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
-    }
-    
-    public String getRequirement() {
-        return requirement;
-    }
+   //set requirement of items
 
     public void setRequirement(String requirement) {
         this.requirement = requirement;
     }
+    
+    //get requirement of items
     
     public String getRequirementType() {
         return requirementType;
@@ -49,6 +42,15 @@ public class Item {
 
     public void setRequirementType(String requirementType) {
         this.requirementType = requirementType;
+    }
+    
+    
+     public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
+    
+    public String getRequirement() {
+        return requirement;
     }
     
     @Override

@@ -281,7 +281,7 @@ public class MainJframe_home extends javax.swing.JFrame {
     String password= String.valueOf(passCharArray);
     
     //Step 1: Check user account directory in the system if the user exists
-    UserAccount useraccount=ecosystem.getUserAccountDirectory().authenticateUser(userName, password);
+    UserAccount useraccount=ecosystem.getUserAccountDir().authenticateUser(userName, password);
     Enterprise inEnterprise=null;
     Organization inOrganization=null;
     
@@ -289,12 +289,12 @@ public class MainJframe_home extends javax.swing.JFrame {
         //Step 2: Check each enterprise
         for(Network network:ecosystem.getNetworkList()){
             //Step 2-a: Check inside network against each enterprise
-            for(Enterprise enterprise: network.getEnterpriseDirectory().getEnterpriseList()){
-                useraccount=enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+            for(Enterprise enterprise: network.getEnterpriseDir().getEnterpriseList()){
+                useraccount=enterprise.getUserAccountDir().authenticateUser(userName, password);
                 if(useraccount==null){
                     //Step 3: Under the enterprise check each organization
-                    for(Organization organization:enterprise.getOrganizationDirectory().getOrganizationList()){
-                        useraccount=organization.getUserAccountDirectory().authenticateUser(userName, password);
+                    for(Organization organization:enterprise.getOrganizationDir().getOrganizationList()){
+                        useraccount=organization.getUserAccountDir().authenticateUser(userName, password);
                         
                         if(useraccount!=null){
                             

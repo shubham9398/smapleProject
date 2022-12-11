@@ -7,10 +7,7 @@ package Business.EventMaker;
 
 import Business.WorkQueue.WorkQueue;
 
-/**
- *
- * @author ymayank97
- */
+
 public class EventMaker {
     private String name;
     private String id;
@@ -23,14 +20,18 @@ public class EventMaker {
         id= "EM"+(++count);
         workQueue=new WorkQueue();
     }
+     
+      public String getName() {
+        return name;
+    }
+      
+      //setName of eventmaker
 
-    public WorkQueue getWorkQueue() {
-        return workQueue;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setWorkQueue(WorkQueue workQueue) {
-        this.workQueue = workQueue;
-    }
+   
     
     public String getId() {
         return id;
@@ -39,19 +40,25 @@ public class EventMaker {
     public void setId(String id) {
         this.id = id;
     }
-     
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    
+    
+   
 
      @Override
      public String toString(){
          return name;
      }
+     
+     
+     
+      public WorkQueue getWorkQueue() {
+        return workQueue;
+    }
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
+    }
+     
     
 }
 

@@ -7,21 +7,20 @@ package Business.Police;
 
 import Business.WorkQueue.WorkQueue;
 
-/**
- *
- * @author vidhi
- */
+
 public class Police {
     private String Name;
     private static int Count=1;
     private String PoliceId;
     private WorkQueue workQueue;
-    //Police class constructor to autogenerate id
+    
     public Police() {
         
         PoliceId = "Police"+(++Count);
         workQueue= new WorkQueue();
     }
+    
+    //get count method to gernerate cout
     
     public static int getCount() {
         return Count;
@@ -31,14 +30,8 @@ public class Police {
         Police.Count = Count;
     }
     
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String Name) {
-        this.Name = Name;
-    }
-
+   
+//get Name of police ID
     public String getPoliceId() {
         return PoliceId;
     }
@@ -50,10 +43,24 @@ public class Police {
     public WorkQueue getWorkQueue() {
         return workQueue;
     }
+    
+     public String getName() {
+        return Name;
+    }
+     
+     //set name of police 
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+    
+    //set WorkQueue
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
+    
+    //change Object to String  for table display
           
     @Override
     public String toString(){

@@ -7,9 +7,9 @@ package UI.EventMaker;
 
 
 import Business.Employee.Employee;
-import Business.Organization.EventMakerOrganization;
+import Business.Organization.EventMakerOrg;
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
+import Business.Organization.OrganizationDir;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,9 +24,9 @@ public class ManageEmployee extends javax.swing.JPanel {
     /**
      * Creates new form ManageEnterprise
      */
-    private OrganizationDirectory orgdirectory;
+    private OrganizationDir orgdirectory;
     private JPanel userProcessContainer;
-    public ManageEmployee(JPanel userProcessContainer,OrganizationDirectory orgdirectory) {
+    public ManageEmployee(JPanel userProcessContainer,OrganizationDir orgdirectory) {
         initComponents();   
         this.userProcessContainer=userProcessContainer;
         this.orgdirectory=orgdirectory;
@@ -39,10 +39,10 @@ public class ManageEmployee extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
+        for (Employee employee : organization.getEmployeeDir().getEmpList()){
             Object[] row = new Object[5];
             row[0] = employee;
-            row[2] = employee.getId();
+            row[2] = employee.getEmployeeId();
             row[1] = organization.getName();
             model.addRow(row);
         }
@@ -52,7 +52,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         comboOrg.removeAllItems();
         
         for (Organization organization : orgdirectory.getOrganizationList()){
-            if(organization instanceof EventMakerOrganization)
+            if(organization instanceof EventMakerOrg)
             comboOrg.addItem(organization);
             
         }
@@ -62,7 +62,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         comboOrgSelect.removeAllItems();
         
         for (Organization organization : orgdirectory.getOrganizationList()){
-             if(organization instanceof EventMakerOrganization)
+             if(organization instanceof EventMakerOrg)
             comboOrgSelect.addItem(organization);
             
         }
@@ -290,7 +290,7 @@ public class ManageEmployee extends javax.swing.JPanel {
         Organization organization =(Organization)comboOrgSelect.getSelectedItem();
         String name = txtName.getText();
         
-        organization.getEmployeeDirectory().createEmployee(name);
+        organization.getEmployeeDir().createEmployee(name);
         populateTbl(organization);
         
         txtName.setText("");

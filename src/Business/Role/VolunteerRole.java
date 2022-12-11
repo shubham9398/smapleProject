@@ -8,21 +8,18 @@ package Business.Role;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.Organization.VolunteerOrganization;
+import Business.Organization.VolunteerOrg;
 import Business.UserAccount.UserAccount;
 import UI.VolunteerOrganization.DashboardVolunteer;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class VolunteerRole extends Role{
     //overriding main panel with volunteer work area whenever volunteer role is called
         @Override
         public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system)
         {
-            return new DashboardVolunteer(userProcessContainer,account,(VolunteerOrganization)organization,enterprise,system);
+            return new DashboardVolunteer(userProcessContainer,account,(VolunteerOrg)organization,enterprise,system);
         }   
         @Override
         public String toString()

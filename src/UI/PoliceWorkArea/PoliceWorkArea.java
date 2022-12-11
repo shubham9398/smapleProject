@@ -8,10 +8,10 @@ package UI.PoliceWorkArea;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.Organization.PoliceOrganization;
+import Business.Organization.PoliceOrg;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.VictimWorkRequest;
-import Business.WorkQueue.WorkRequest;
+import Business.WorkQueue.VictimWorkReq;
+import Business.WorkQueue.WorkReq;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -26,7 +26,7 @@ public class PoliceWorkArea extends javax.swing.JPanel {
     private Organization organization;
     private Enterprise enterprise;
     private Ecosystem system;
-    PoliceOrganization policeOrganization;
+    PoliceOrg policeOrganization;
     /**
      * Creates new form PoliceWorkArea
      */
@@ -49,16 +49,16 @@ public class PoliceWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkRequest){
+        for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
+           if(work instanceof VictimWorkReq){
                if((work.getStatus().equalsIgnoreCase("Assigned To Police"))||(work.getStatus().equalsIgnoreCase("Police assigned the Request"))){
                    
                
             Object[] row = new Object[10];
-            row[0] = work.getSender().getEmployee().getName();
+            row[0] = work.getSender().getEmployee().getEmployeeName();
             row[1] = work.getSubject();
-            row[2] = ((VictimWorkRequest) work).getDescription();
-            row[3] = ((VictimWorkRequest) work).getLocation();
+            row[2] = ((VictimWorkReq) work).getDescription();
+            row[3] = ((VictimWorkReq) work).getLocation();
             row[4] = work.getRequestDate();
             row[5] = work;
             row[6] = work.getReciever();
@@ -209,7 +209,7 @@ public class PoliceWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            VictimWorkReq cswr = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
             if(cswr.getStatus().equalsIgnoreCase("Assigned To Police")){ 
             cswr.setStatus("Police assigned the Request");
             cswr.setReciever(account);
@@ -229,7 +229,7 @@ public class PoliceWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            VictimWorkReq p = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
              if(p.getStatus().equalsIgnoreCase("Police assigned the Request")){ 
             p.setStatus("Complete");
             p.setReciever(account);

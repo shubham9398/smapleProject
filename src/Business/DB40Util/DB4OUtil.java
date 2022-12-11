@@ -14,28 +14,31 @@ import com.db4o.ObjectSet;
 import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.ta.TransparentPersistenceSupport;
 
-/**
- *
- * @author ymayank97
- */
+
 public class DB4OUtil {
 
     private static final String FILENAME = Paths.get("Databank.db4o").toAbsolutePath().toString();// path to the data store
     private static DB4OUtil dB4OUtil;
     
-    public synchronized static DB4OUtil getInstance(){
-        if (dB4OUtil == null){
-            dB4OUtil = new DB4OUtil();
-        }
-        System.out.println("DB4 instance");
-        return dB4OUtil;
+    
+    
+     public synchronized void storeSystem(Ecosystem system) {
+        ObjectContainer conn = createConnection();
+        conn.store(system);
+        conn.commit();
+        conn.close();
     }
+    
+    
 
     protected synchronized static void shutdown(ObjectContainer conn) {
         if (conn != null) {
             conn.close();
         }
     }
+    
+    
+    
     // connection
     private ObjectContainer createConnection() {
         try {
@@ -55,18 +58,13 @@ public class DB4OUtil {
         return null;
     }
 
-    public synchronized void storeSystem(Ecosystem system) {
-        ObjectContainer conn = createConnection();
-        conn.store(system);
-        conn.commit();
-        conn.close();
-    }
+   
     
     public Ecosystem retrieveSystem(){
         ObjectContainer conn = createConnection();
         
         ObjectSet<Ecosystem> systems = conn.query(Ecosystem.class);
-        System.out.println("Connection Successfull");
+        System.out.println("Connection Successfull . Lets start our application");
         Ecosystem system;
         if (systems.size() == 0){
             system = ConfigureASystem.configure(); 
@@ -76,5 +74,14 @@ public class DB4OUtil {
         }
         conn.close();
         return system;
+    }
+    
+    
+    public synchronized static DB4OUtil getInstance(){
+        if (dB4OUtil == null){
+            dB4OUtil = new DB4OUtil();
+        }
+        System.out.println("DB4o istance in created!!");
+        return dB4OUtil;
     }
 }

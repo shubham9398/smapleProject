@@ -8,20 +8,17 @@ package Business.Role;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.Organization.ProviderOrganization;
+import Business.Organization.ProviderOrg;
 import Business.UserAccount.UserAccount;
 import UI.Provider.ProviderWorkArea;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class ProviderRole extends Role{
     //overriding main panel with provider work area whenever provider role is called
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system){
-        return new ProviderWorkArea(userProcessContainer,account,(ProviderOrganization)organization,enterprise,system);
+        return new ProviderWorkArea(userProcessContainer,account,(ProviderOrg)organization,enterprise,system);
     }
         @Override
         public String toString()

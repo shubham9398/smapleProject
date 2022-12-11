@@ -175,7 +175,7 @@ public class EventSeekerAdminWorkArea extends javax.swing.JPanel {
 
     private void btnManageEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEmployeeActionPerformed
         // TODO add your handling code here:
-        ManageEmployee mngEmp = new ManageEmployee(userProcessContainer, enterprise.getOrganizationDirectory());
+        ManageEmployee mngEmp = new ManageEmployee(userProcessContainer, enterprise.getOrganizationDir());
         userProcessContainer.add("SeekerManageEmployee", mngEmp);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -185,6 +185,7 @@ public class EventSeekerAdminWorkArea extends javax.swing.JPanel {
         // TODO add your handling code here:
         ManageUserAccount mngUser = new ManageUserAccount(userProcessContainer, enterprise);
         userProcessContainer.add("SeekerManageUserAccount", mngUser);
+        //
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageUserAccountActionPerformed

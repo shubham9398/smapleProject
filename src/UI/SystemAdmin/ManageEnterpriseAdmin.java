@@ -47,11 +47,11 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (Network network : system.getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
+            for (Enterprise enterprise : network.getEnterpriseDir().getEnterpriseList()) {
+                for (UserAccount userAccount : enterprise.getUserAccountDir().getUserAccountList()) {
                     Object[] row = new Object[3];
                     row[0] = enterprise.getName();
-                    row[1] = network.getName();
+                    row[1] = network.getNetworkName();
                     row[2] = userAccount;
 
                     model.addRow(row);
@@ -71,7 +71,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
     private void populateComboBoxEnterprise(Network network) {
         comboType.removeAllItems();
 
-        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+        for (Enterprise enterprise : network.getEnterpriseDir().getEnterpriseList()) {
             comboType.addItem(enterprise);
         }
 
@@ -348,22 +348,22 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         String password = String.valueOf(txtPasword.getPassword());
         String name = txtAdmin.getText();
 
-        Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+        Employee employee = enterprise.getEmployeeDir().createEmployee(name);
         if (Ecosystem.checkIfUsernameIsUnique(username)) {
             UserAccount account = null;
             if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Community) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new CommunityAdminRole());
+                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new CommunityAdminRole());
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new NGOAdminRole());
+                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new NGOAdminRole());
             
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Provider) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ProviderAdminRole());
+                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new ProviderAdminRole());
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Police) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new PoliceAdminRole());
+                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new PoliceAdminRole());
             } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorAdminRole());
+                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new DoctorAdminRole());
             }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.FireMan) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new FireManAdminRole());
+                account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new FireManAdminRole());
             }
 
             populateTableEnterpriseAdmin();
@@ -386,10 +386,10 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             UserAccount p = (UserAccount) tblEnterprise.getValueAt(selectedRow, 2);
 
             for (Network network : system.getNetworkList()) {
-                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                    for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                for (Enterprise enterprise : network.getEnterpriseDir().getEnterpriseList()) {
+                    for (UserAccount userAccount : enterprise.getUserAccountDir().getUserAccountList()) {
                         if (p == userAccount) {
-                            enterprise.getUserAccountDirectory().getUserAccountList().remove(p);
+                            enterprise.getUserAccountDir().getUserAccountList().remove(p);
                             break;
                         }
 

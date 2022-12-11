@@ -6,22 +6,20 @@
 package Business.Enterprise;
 
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
+import Business.Organization.OrganizationDir;
 
-/**
- *
- * @author vidhi
- */
 public abstract class Enterprise extends Organization {
     
     private EnterpriseType enterpriseType;
-    private OrganizationDirectory organizationDirectory;
+    private OrganizationDir organizationDir;
+    
+    //constructor
     
     public Enterprise(String name, EnterpriseType type)
     {
       super(name);
       this.enterpriseType= type;
-      organizationDirectory = new OrganizationDirectory();
+      organizationDir = new OrganizationDir();
     }
     //enums for different types of enterprise
      public enum EnterpriseType
@@ -35,10 +33,7 @@ public abstract class Enterprise extends Organization {
         
         private String value;
         
-        private EnterpriseType(String value)
-        {
-            this.value = value;
-        }
+        
 
         public String getValue() {
             return value;
@@ -49,14 +44,25 @@ public abstract class Enterprise extends Organization {
         {
             return value;
         }
+        
+        //Enterprise type to set 
+        
+        private EnterpriseType(String value)
+        {
+            this.value = value;
+        }
      }
+     
+     //het orgaixation dir
+     
+     public OrganizationDir getOrganizationDir() {
+        return organizationDir;
+    }
 
     public EnterpriseType getEnterpriseType() {
         return enterpriseType;
     }
 
-    public OrganizationDirectory getOrganizationDirectory() {
-        return organizationDirectory;
-    }
+    
 
 }

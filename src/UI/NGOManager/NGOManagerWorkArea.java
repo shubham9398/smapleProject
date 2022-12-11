@@ -9,9 +9,9 @@ import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.NGOWorkRequest;
-import Business.WorkQueue.VictimWorkRequest;
-import Business.WorkQueue.WorkRequest;
+import Business.WorkQueue.NGOWorkReq;
+import Business.WorkQueue.VictimWorkReq;
+import Business.WorkQueue.WorkReq;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.text.ParseException;
@@ -65,15 +65,15 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof NGOWorkRequest){ 
+        for (WorkReq work : organization.getWorkQueue().getWorkRequestList()){
+           if(work instanceof NGOWorkReq){ 
             Object[] row = new Object[10];
             row[0] = work;
-            row[1] = ((NGOWorkRequest) work).getDescription();
+            row[1] = ((NGOWorkReq) work).getDescription();
             row[2] =  work.getRequestDate();
-            row[3] = ((NGOWorkRequest) work).getLocation();
-            row[4] = ((NGOWorkRequest) work).getvRequired();
-            row[5] = ((NGOWorkRequest) work).getvAcquired();
+            row[3] = ((NGOWorkReq) work).getLocation();
+            row[4] = ((NGOWorkReq) work).getvRequired();
+            row[5] = ((NGOWorkReq) work).getvAcquired();
             
             model.addRow(row);
            }
@@ -86,16 +86,16 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkRequest){
+        for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
+           if(work instanceof VictimWorkReq){
                if((work.getStatus().equalsIgnoreCase("Assigned To NGO"))||(work.getStatus().equalsIgnoreCase("NGO ASSIGNED the Request"))){
                    
                
             Object[] row = new Object[10];
-            row[0] = work.getSender().getEmployee().getName();
+            row[0] = work.getSender().getEmployee().getEmployeeName();
             row[1] = work.getSubject();
-            row[2] = ((VictimWorkRequest) work).getDescription();
-            row[3] = ((VictimWorkRequest) work).getLocation();
+            row[2] = ((VictimWorkReq) work).getDescription();
+            row[3] = ((VictimWorkReq) work).getLocation();
             row[4] = work.getRequestDate();
             row[5] = work;
             row[6] = work.getReciever();
@@ -456,11 +456,11 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
     private void btnAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalysisActionPerformed
         DefaultCategoryDataset d = new DefaultCategoryDataset();
 
-        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof NGOWorkRequest)
+        for (WorkReq work : organization.getWorkQueue().getWorkRequestList()){
+           if(work instanceof NGOWorkReq)
            {
             
-               d.setValue(((NGOWorkRequest) work).getvAcquired(),"Event List",((NGOWorkRequest) work).getTitle());
+               d.setValue(((NGOWorkReq) work).getvAcquired(),"Event List",((NGOWorkReq) work).getTitle());
              
         }
         }
@@ -512,7 +512,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
             return;
         }
         
-        NGOWorkRequest reqst = new NGOWorkRequest();
+        NGOWorkReq reqst = new NGOWorkReq();
         reqst.setTitle(event);
         reqst.setDescription(desp);
         reqst.setLocation(location);
@@ -541,7 +541,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         } 
          
         else {
-            VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            VictimWorkReq cswr = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
 
             if(cswr.getStatus().equalsIgnoreCase("Assigned to NGO")){
             cswr.setStatus("NGO Assigned the Request");
@@ -563,7 +563,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         } 
         else {
 
-            VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
+            VictimWorkReq p = (VictimWorkReq) tblRequests.getValueAt(selectedRow, 5);
             if(p.getStatus().equalsIgnoreCase("NGO Assigned the Request")){
                     p.setStatus("Complete");
                     p.setReciever(account);

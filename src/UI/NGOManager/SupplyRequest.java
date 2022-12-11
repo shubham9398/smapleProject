@@ -8,10 +8,10 @@ package UI.NGOManager;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.Provider.Provider;
+import Business.Provider.Supplier;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.ProviderWorkRequest;
-import Business.WorkQueue.WorkRequest;
+import Business.WorkQueue.ProviderWorkReq;
+import Business.WorkQueue.WorkReq;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -38,7 +38,7 @@ public class SupplyRequest extends javax.swing.JPanel {
     private Organization organization;
     private Enterprise enterprise;
     private Ecosystem system;
-    private Provider p;
+    private Supplier p;
     
     public SupplyRequest(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
         initComponents();
@@ -58,12 +58,12 @@ public class SupplyRequest extends javax.swing.JPanel {
         model.setRowCount(0);
         
        
-        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof ProviderWorkRequest){ 
+        for (WorkReq work : organization.getWorkQueue().getWorkRequestList()){
+           if(work instanceof ProviderWorkReq){ 
             Object[] row = new Object[10];
-            row[0] = ((ProviderWorkRequest) work).getRtype();
-            row[1] = ((ProviderWorkRequest) work).getReq();
-            row[2] = ((ProviderWorkRequest) work).getQuantity();
+            row[0] = ((ProviderWorkReq) work).getRtype();
+            row[1] = ((ProviderWorkReq) work).getReq();
+            row[2] = ((ProviderWorkReq) work).getQuantity();
             row[3] = work;
             row[4] = work.getSender();
             
@@ -295,7 +295,7 @@ public class SupplyRequest extends javax.swing.JPanel {
             return;
         }
         
-        ProviderWorkRequest rqst = new ProviderWorkRequest();
+        ProviderWorkReq rqst = new ProviderWorkReq();
         
         rqst.setRtype(rType);
         rqst.setReq(req);
@@ -326,21 +326,21 @@ public class SupplyRequest extends javax.swing.JPanel {
         int c=0;
         int m=0;
         int n=0;
-        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof ProviderWorkRequest)
+        for (WorkReq work : organization.getWorkQueue().getWorkRequestList()){
+           if(work instanceof ProviderWorkReq)
            {
               
-              if(((ProviderWorkRequest) work).getRtype().equals("Food")){
-                  b=b+((ProviderWorkRequest) work).getQuantity();
+              if(((ProviderWorkReq) work).getRtype().equals("Food")){
+                  b=b+((ProviderWorkReq) work).getQuantity();
               }
-              if(((ProviderWorkRequest) work).getRtype().equals("Clothes")){
-                  c=c+((ProviderWorkRequest) work).getQuantity();
+              if(((ProviderWorkReq) work).getRtype().equals("Clothes")){
+                  c=c+((ProviderWorkReq) work).getQuantity();
               }
-              if(((ProviderWorkRequest) work).getRtype().equals("Medicine")){
-                  m=m+((ProviderWorkRequest) work).getQuantity();
+              if(((ProviderWorkReq) work).getRtype().equals("Medicine")){
+                  m=m+((ProviderWorkReq) work).getQuantity();
               }
-              if(((ProviderWorkRequest) work).getRtype().equals("Education")){
-                  n=n+((ProviderWorkRequest) work).getQuantity();
+              if(((ProviderWorkReq) work).getRtype().equals("Education")){
+                  n=n+((ProviderWorkReq) work).getQuantity();
               }
            }
         }

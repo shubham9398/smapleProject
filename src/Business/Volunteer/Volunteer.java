@@ -7,18 +7,15 @@ package Business.Volunteer;
 
 import Business.WorkQueue.WorkQueue;
 
-/**
- *
- * @author vidhi
- */
+
 public class Volunteer {
     private String volunteerName;
-    private String id;
+    private String volunteerId;
     private static int count=1;
     private WorkQueue workqueue;
-    //Volunteer class constructor to autogenerate id
+    //Volunteer class constructor 
     public Volunteer() {
-        id="Vol"+(++count);
+        volunteerId="Vol"+(++count);
         workqueue= new WorkQueue();
     }
     
@@ -26,24 +23,28 @@ public class Volunteer {
         return volunteerName;
     }
 
-    public void setVolunteerName(String volunteerName) {
-        this.volunteerName = volunteerName;
-    }
-    
-    public WorkQueue getWorkqueue() {
-        return workqueue;
-    }
+  
 
     public void setWorkqueue(WorkQueue workqueue) {
         this.workqueue = workqueue;
     }
 
-    public String getId() {
-        return id;
+    public String getVolunteerId() {
+        return volunteerId;
     }
-
-    public void setId(String id) {
-        this.id = id;
+    
+    //set volunterer name
+    
+      public void setVolunteerName(String volunteerName) {
+        this.volunteerName = volunteerName;
+    }
+    //get work queue
+    public WorkQueue getWorkqueue() {
+        return workqueue;
+    }
+//set volunterr Id
+    public void setVolunteerId(String volunteerId) {
+        this.volunteerId = volunteerId;
     }
     
     @Override

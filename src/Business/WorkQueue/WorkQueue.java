@@ -7,21 +7,20 @@ package Business.WorkQueue;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author vidhi
- */
+
 public class WorkQueue {
     
-    private ArrayList<WorkRequest> workRequestList;
+    private ArrayList<WorkReq> workRequestList;
+    
+    public ArrayList<WorkReq> getWorkRequestList() {
+        return workRequestList;
+    }
     
     public WorkQueue(){
         workRequestList=new ArrayList<>();
     }
 
-    public ArrayList<WorkRequest> getWorkRequestList() {
-        return workRequestList;
-    }
+   
     
     
 }

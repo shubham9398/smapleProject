@@ -7,49 +7,53 @@ package Business.Victim;
 
 import Business.WorkQueue.WorkQueue;
 
-/**
- *
- * @author vidhi
- */
+
 public class Victim {
-    private String name;
-    private String id;
+    private String victimName;
+    private String victimId;
     private WorkQueue workqueue;
     
     private static int count=1;
-    //victim class constructor to autogenerate id
+    //victim class constructor to autogenerate victimId
      public Victim(){
          
-        id= "Victim"+(++count);
+        victimId= "Victim"+(++count);
     }
 
     public WorkQueue getWorkqueue() {
         return workqueue;
     }
+    
+    //Set victim NAme
 
-    public void setWorkqueue(WorkQueue workqueue) {
+   
+    public void setVictimName(String victimName) {
+        this.victimName = victimName;
+    }
+    
+    //get victim ID
+
+    public String getVictimId() {
+        return victimId;
+    }
+    
+    //set Work Queue
+
+     public void setWorkqueue(WorkQueue workqueue) {
         this.workqueue = workqueue;
     }
  
-     
-    public String getName() {
-        return name;
+    //get victime name 
+    public String getVictimName() {
+        return victimName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setVictimId(String victimId) {
+        this.victimId = victimId;
     }
      
      @Override
      public String toString(){
-         return name;
+         return victimName;
      }
 }

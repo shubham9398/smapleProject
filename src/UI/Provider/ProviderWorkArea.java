@@ -9,13 +9,13 @@ package UI.Provider;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.Organization.ProviderOrganization;
+import Business.Organization.ProviderOrg;
 import Business.Provider.Item;
-import Business.Provider.Provider;
+import Business.Provider.Supplier;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.ProviderWorkRequest;
+import Business.WorkQueue.ProviderWorkReq;
 import Business.WorkQueue.WorkQueue;
-import Business.WorkQueue.WorkRequest;
+import Business.WorkQueue.WorkReq;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -34,7 +34,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
     private Organization organization;
     private Enterprise enterprise;
     private Ecosystem system;
-    private Provider p;
+    private Supplier p;
     
     public ProviderWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
         initComponents();
@@ -44,8 +44,8 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.system=system;
        
-          for (Provider provider : ((ProviderOrganization)organization).getProviderList().getProviderList()) {
-            if (account.getEmployee().getName().equals(provider.getsName())) {
+          for (Supplier provider : ((ProviderOrg)organization).getProviderList().getProviderList()) {
+            if (account.getEmployee().getEmployeeName().equals(provider.getSupplierName())) {
                  p=provider;
             }
         }
@@ -65,12 +65,12 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof ProviderWorkRequest){ 
+        for (WorkReq work : system.getWorkQueue().getWorkRequestList()){
+           if(work instanceof ProviderWorkReq){ 
             Object[] row = new Object[10];
-            row[0] = ((ProviderWorkRequest) work).getRtype();
-            row[1] = ((ProviderWorkRequest) work).getReq();
-            row[2] = ((ProviderWorkRequest) work).getQuantity();
+            row[0] = ((ProviderWorkReq) work).getRtype();
+            row[1] = ((ProviderWorkReq) work).getReq();
+            row[2] = ((ProviderWorkReq) work).getQuantity();
             row[3] = work;
             row[4] = work.getSender();
            
@@ -85,7 +85,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) tblCreate.getModel();
         
             model.setRowCount(0);
-            for(Item item: p.getItemDirectory().getSupplyList()){
+            for(Item item: p.getItemDir().getSupplyList()){
             Object[] row = new Object[10];
             row[0] = item.getRequirementType();
             row[1] = item.getRequirement();
@@ -340,7 +340,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            ProviderWorkRequest nswr = (ProviderWorkRequest) tblProvideReq.getValueAt(selectedRow, 3);
+            ProviderWorkReq nswr = (ProviderWorkReq) tblProvideReq.getValueAt(selectedRow, 3);
 
             nswr.setStatus("Pending");
             nswr.setReciever(account);
@@ -360,16 +360,16 @@ public class ProviderWorkArea extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
 
-            ProviderWorkRequest pwr = (ProviderWorkRequest) tblProvideReq.getValueAt(selectedRow, 3);
+            ProviderWorkReq pwr = (ProviderWorkReq) tblProvideReq.getValueAt(selectedRow, 3);
             if (pwr.getReciever() != null) {
                 if (pwr.getStatus().equals("Pending")) {
                     UserAccount a = pwr.getSender();
                     int temp = 0;
-                    if (p.getItemDirectory().getSupplyList().size() <= 0) {
+                    if (p.getItemDir().getSupplyList().size() <= 0) {
                         JOptionPane.showMessageDialog(null, "No Stock available. Request from Provider");
                         return;
                     }
-                    for (Item item : p.getItemDirectory().getSupplyList()) {
+                    for (Item item : p.getItemDir().getSupplyList()) {
                        
                         if (pwr.getReq().equals(item.getRequirement())&& pwr.getRtype().equals(item.getRequirementType())) {
                             
@@ -415,7 +415,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         }
 
        
-        Item item = p.getItemDirectory().addSupply();
+        Item item = p.getItemDir().addSupply();
         
         item.setRequirementType(type);
         item.setRequirement(req);

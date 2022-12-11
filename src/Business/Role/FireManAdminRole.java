@@ -12,10 +12,7 @@ import Business.UserAccount.UserAccount;
 import UI.FireManEnterprise.FireManAdminWorkArea;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class FireManAdminRole extends Role{
     //overriding main panel with fireman admin work area whenever fireman admin role is called
     @Override

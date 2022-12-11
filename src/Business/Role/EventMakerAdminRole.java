@@ -12,10 +12,7 @@ import Business.UserAccount.UserAccount;
 import UI.EventMaker.EventMakerAdminWorkArea;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class EventMakerAdminRole extends Role{
     //overriding main panel with event maker admin work area whenever event maker admin role is called
     @Override

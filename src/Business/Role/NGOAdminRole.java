@@ -12,10 +12,7 @@ import Business.UserAccount.UserAccount;
 import UI.NGOEnterprise.NGOAdminWorkArea;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class NGOAdminRole extends Role{
     //overriding main panel with NGO admin work area whenever NGO admin role is called
     @Override

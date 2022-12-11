@@ -11,8 +11,8 @@ import Business.Enterprise.Enterprise;
 import Business.EventMaker.EventMaker;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.VictimWorkRequest;
-import Business.WorkQueue.WorkRequest;
+import Business.WorkQueue.VictimWorkReq;
+import Business.WorkQueue.WorkReq;
 import googlemaps.GoogleMapsViewer;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -56,13 +56,13 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
         model.setRowCount(0);
         
         
-        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkRequest){ 
+        for (WorkReq work : organization.getWorkQueue().getWorkRequestList()){
+           if(work instanceof VictimWorkReq){ 
             Object[] row = new Object[10];
-            row[0] = work.getSender().getEmployee().getName();
+            row[0] = work.getSender().getEmployee().getEmployeeName();
             row[1] = work.getSubject();
-            row[2] = ((VictimWorkRequest) work).getDescription();
-            row[3] = ((VictimWorkRequest) work).getLocation();
+            row[2] = ((VictimWorkReq) work).getDescription();
+            row[3] = ((VictimWorkReq) work).getLocation();
             row[4] = work.getRequestDate();
             row[5] = work;
             row[6] = work.getReciever();
@@ -266,7 +266,7 @@ public class EventSeekerWorkArea extends javax.swing.JPanel {
             return;
         }
         
-        VictimWorkRequest req = new VictimWorkRequest();
+        VictimWorkReq req = new VictimWorkReq();
         req.setSubject(subject);
         req.setDescription(desp);
         req.setLocation(location);

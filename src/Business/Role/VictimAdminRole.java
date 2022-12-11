@@ -12,10 +12,7 @@ import Business.UserAccount.UserAccount;
 import UI.EventSeeker.EventSeekerAdminWorkArea;
 import javax.swing.JPanel;
 
-/**
- *
- * @author vidhi
- */
+
 public class VictimAdminRole extends Role{
     //overriding main panel with victim admin work area whenever victim admin role is called
     @Override

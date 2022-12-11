@@ -149,7 +149,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("NGO Manager Work Area");
+        jLabel1.setText("Contractor Manager");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -172,7 +172,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Event Title", "Description", "Date", "Location", "Volunteers Required", "Volunteers acquired"
+                "Work Title", "Description", "Date", "Location", "Workers Required", "Workers acquired"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -187,7 +187,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
 
         btnAssign.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAssign.setForeground(new java.awt.Color(153, 0, 153));
-        btnAssign.setText("Acknowledge");
+        btnAssign.setText("Undertake");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
@@ -196,7 +196,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
 
         btnComplete.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnComplete.setForeground(new java.awt.Color(153, 0, 153));
-        btnComplete.setText("Completed");
+        btnComplete.setText("Mark Completed");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCompleteActionPerformed(evt);
@@ -205,7 +205,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(153, 0, 153));
-        jLabel9.setText("Pending Requests");
+        jLabel9.setText("Pending Tasks");
 
         tblRequests.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tblRequests.setModel(new javax.swing.table.DefaultTableModel(
@@ -227,7 +227,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         tblRequests.setOpaque(false);
         jScrollPane3.setViewportView(tblRequests);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Create event", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(153, 0, 153))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Create Work Request", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(153, 0, 153))); // NOI18N
         jPanel3.setOpaque(false);
 
         txtVolunteers.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -239,7 +239,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 0, 153));
-        jLabel7.setText("Numbers of Volunteers");
+        jLabel7.setText("Numbers of Workers");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 0, 153));
@@ -258,11 +258,11 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 0, 153));
-        jLabel3.setText("Event Title");
+        jLabel3.setText("Work Title");
 
         btnCreate.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         btnCreate.setForeground(new java.awt.Color(153, 0, 153));
-        btnCreate.setText("Create Event");
+        btnCreate.setText("Create Work Request");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
@@ -307,7 +307,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                             .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(482, 482, 482)
-                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(150, 150, 150))
         );
         jPanel3Layout.setVerticalGroup(
@@ -340,12 +340,12 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                 .addGap(8, 8, 8))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Request", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(153, 0, 153))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Procure Raw Materials", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 24), new java.awt.Color(153, 0, 153))); // NOI18N
         jPanel4.setOpaque(false);
 
         btnRequest.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRequest.setForeground(new java.awt.Color(153, 0, 153));
-        btnRequest.setText("Supplies");
+        btnRequest.setText("Order Now");
         btnRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestActionPerformed(evt);
@@ -372,7 +372,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         btnAnalysis.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnAnalysis.setForeground(new java.awt.Color(153, 0, 153));
         btnAnalysis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/NGOManager/research (1).png"))); // NOI18N
-        btnAnalysis.setText("Volunteers");
+        btnAnalysis.setText("Worker Stats");
         btnAnalysis.setBorderPainted(false);
         btnAnalysis.setContentAreaFilled(false);
         btnAnalysis.addActionListener(new java.awt.event.ActionListener() {
@@ -408,7 +408,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                                 .addGap(27, 27, 27))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAnalysis, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAnalysis, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(19, 19, 19))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -434,7 +434,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

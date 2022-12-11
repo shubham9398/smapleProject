@@ -105,7 +105,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Provider Work Area"/>
+            <Property name="text" type="java.lang.String" value="Supplier"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -195,7 +195,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="0" red="99" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Assign"/>
+        <Property name="text" type="java.lang.String" value="X Assign"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAssignActionPerformed"/>
@@ -205,7 +205,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="1" position="2" title="Request">
+            <TitledBorder justification="1" position="2" title="X Request">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
@@ -370,7 +370,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="0" red="99" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Create Requirement"/>
+        <Property name="text" type="java.lang.String" value="X Create Requirement"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">

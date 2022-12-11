@@ -69,7 +69,7 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnAnalysis" min="-2" pref="244" max="-2" attributes="0"/>
+                                  <Component id="btnAnalysis" min="-2" pref="240" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -105,7 +105,7 @@
                   </Group>
                   <EmptySpace type="separate" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="139" max="-2" attributes="0"/>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -147,7 +147,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="NGO Manager Work Area"/>
+                <Property name="text" type="java.lang.String" value="Contractor Manager"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -166,13 +166,47 @@
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="0">
-                    <Column editable="false" title="Event Title" type="java.lang.Object"/>
+                    <Column editable="false" title="Work Title" type="java.lang.Object"/>
                     <Column editable="false" title="Description" type="java.lang.Object"/>
                     <Column editable="false" title="Date" type="java.lang.Object"/>
                     <Column editable="false" title="Location" type="java.lang.Object"/>
-                    <Column editable="false" title="Volunteers Required" type="java.lang.Object"/>
-                    <Column editable="true" title="Volunteers acquired" type="java.lang.Object"/>
+                    <Column editable="false" title="Workers Required" type="java.lang.Object"/>
+                    <Column editable="true" title="Workers acquired" type="java.lang.Object"/>
                   </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -189,7 +223,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Acknowledge"/>
+            <Property name="text" type="java.lang.String" value="Undertake"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAssignActionPerformed"/>
@@ -203,7 +237,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Completed"/>
+            <Property name="text" type="java.lang.String" value="Mark Completed"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCompleteActionPerformed"/>
@@ -217,7 +251,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pending Requests"/>
+            <Property name="text" type="java.lang.String" value="Pending Tasks"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane3">
@@ -294,7 +328,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder justification="1" position="2" title="Create event">
+                <TitledBorder justification="1" position="2" title="Create Work Request">
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder/>
                   </Border>
@@ -337,7 +371,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="482" max="-2" attributes="0"/>
-                              <Component id="btnCreate" min="-2" pref="233" max="-2" attributes="0"/>
+                              <Component id="btnCreate" min="-2" pref="272" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
@@ -403,7 +437,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="0" red="99" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Numbers of Volunteers"/>
+                <Property name="text" type="java.lang.String" value="Numbers of Workers"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
@@ -446,7 +480,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="0" red="99" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Event Title"/>
+                <Property name="text" type="java.lang.String" value="Work Title"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnCreate">
@@ -457,7 +491,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="0" red="99" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Create Event"/>
+                <Property name="text" type="java.lang.String" value="Create Work Request"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateActionPerformed"/>
@@ -507,7 +541,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder justification="1" position="2" title="Request">
+                <TitledBorder justification="1" position="2" title="Procure Raw Materials">
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder/>
                   </Border>
@@ -548,7 +582,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="0" red="99" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Supplies"/>
+                <Property name="text" type="java.lang.String" value="Order Now"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRequestActionPerformed"/>
@@ -567,7 +601,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/UI/NGOManager/research (1).png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Volunteers"/>
+            <Property name="text" type="java.lang.String" value="Worker Stats"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
